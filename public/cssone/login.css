@@ -1,0 +1,164 @@
+/* General */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+
+/* Fondo */
+
+.fondo-imagen {
+    height: 100vh;
+    /* Toda la altura de la pantalla */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-image: url('https://wallpapers.com/images/hd/dogs-background-6c193jtf0ddbq6fg.jpg');
+}
+
+
+/* Título */
+
+.contenedor-titulo h1 {
+    font-size: 48px;
+    color: #2196F3;
+    text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #2196F3;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.contenedor-titulo h1 {
+    transition: transform 0.3s ease-in-out;
+}
+
+.contenedor-titulo h1:hover {
+    transform: scale(1.1);
+}
+
+
+/* Contenedor del formulario */
+
+.contenedor-login {
+    width: 400px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Título del formulario */
+
+.login h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+
+/* Campos de usuario y contraseña */
+
+.campo-usuario,
+.campo-contraseña {
+    margin-bottom: 20px;
+}
+
+.campo-usuario input,
+.campo-contraseña input {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+/* Recordar contraseña */
+
+.recordar-contraseña {
+    margin-bottom: 20px;
+}
+
+.recordar-contraseña input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+
+/* Botón */
+
+.login button[type="submit"] {
+    width: 100%;
+    height: 50px;
+    background-color: #2196F3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.login button[type="submit"]:hover {
+    background-color: #1A76D2;
+}
+
+
+/* Estilo para el botón de inicio */
+
+.boton-inicio {
+    width: 10%;
+    height: 50px;
+    background-color: #2196F3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boton-inicio:hover {
+    background-color: #1A76D2;
+}
+
+
+/* Estilo para el enlace dentro del botón */
+
+.boton-inicio a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 50px;
+    /* Centra el texto verticalmente */
+}
+
+.boton-inicio a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}

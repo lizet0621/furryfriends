@@ -1,0 +1,158 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #B3E5FC, #81D4FA);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    max-height: 90vh; /* Altura máxima ajustada */
+    overflow-y: auto; /* Solo permite desplazamiento vertical */
+    overflow-x: hidden; /* Evita el desplazamiento lateral */
+    padding: 20px;
+    margin: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background: white;
+    width: 100%;
+    max-width: 450px;
+    position: relative; /* Mantiene la estructura sin interferir */
+    z-index: 1;
+}
+
+.btn-toggle {
+    margin-bottom: 15px; /* Aumenta el espacio debajo del botón */
+}
+
+/* Botones */
+.btn-toggle {
+    background: linear-gradient(135deg, #0288D1, #01579B);
+    
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    position: relative;
+}
+
+.btn-toggle:hover {
+    background: linear-gradient(135deg, #0277BD, #004D73);
+    box-shadow: 0 4px 10px rgba(2, 119, 189, 0.4);
+}
+
+/* Formulario */
+.input-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    color: #0277BD;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #4FC3F7;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+
+.input-group input:focus {
+    border-color: #0288D1;
+    outline: none;
+    box-shadow: 0 0 8px rgba(2, 136, 209, 0.5);
+}
+
+/* Ocultar campos extra inicialmente */
+.extra-fields {
+    display: none;
+    margin-top: 15px;
+}
+
+/* Tooltip */
+.tooltip-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10; /* Más alto que el container */
+}
+
+/* Asegurar que el tooltip esté por ENCIMA del container */
+.tooltip {
+    visibility: hidden;
+    background: rgba(0, 0, 0, 0.7); /* Más claro */
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    position: absolute;
+    bottom: 120%; /* Mueve el tooltip completamente arriba */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1000; /* Asegura que el tooltip quede sobre todo */
+}
+
+/* Mostrar tooltip al pasar el mouse */
+.tooltip-container:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Botón de registro */
+.btn-register {
+    background: linear-gradient(135deg, #00796B, #004D40);
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+.btn-register:hover {
+    background: linear-gradient(135deg, #00695C, #00332E);
+    box-shadow: 0 4px 10px rgba(0, 121, 107, 0.5);
+}
+
+/* Ajuste para textarea */
+.input-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #4FC3F7;
+    border-radius: 8px;
+    font-size: 16px;
+    resize: none;
+    transition: all 0.3s ease;
+}
+
+.input-group textarea:focus {
+    border-color: #0288D1;
+    outline: none;
+    box-shadow: 0 0 8px rgba(2, 136, 209, 0.5);
+}

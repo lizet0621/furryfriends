@@ -1,0 +1,164 @@
+/* 🎨 Fuente moderna */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap');
+
+body {
+    background: linear-gradient(180deg, #0d47a1, #1976d2);
+    font-family: 'Raleway', sans-serif;
+}
+
+/* 🏠 Botón de regreso a Inicio */
+.btn-back {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #ffca28;
+    color: #1a237e;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-back i {
+    margin-right: 5px;
+}
+
+.btn-back:hover {
+    background: #1a237e;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Asegurar que el container no se vea raro con el botón */
+.container {
+    position: relative;
+    padding-top: 50px;
+}
+
+/* 🏡 Contenedor principal */
+.container {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 1200px;
+    margin: auto;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* 🔍 Filtros de búsqueda */
+.filter-container {
+    background: #1a237e;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 25px;
+    animation: slideIn 0.7s ease-in-out;
+}
+
+.filter-container h2 {
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* 📦 Campos de entrada */
+.filter-container input {
+    border: 2px solid #ffca28;
+    border-radius: 8px;
+    padding: 8px;
+    width: 100%;
+}
+
+/* 🎯 Botón de búsqueda */
+.btn-primary {
+    background: #ffca28;
+    color: #1a237e;
+    border: none;
+    font-weight: bold;
+    padding: 12px;
+    transition: 0.3s;
+    border-radius: 10px;
+}
+
+.btn-primary:hover {
+    background: #1a237e;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* 🐶 Tarjetas de los perros */
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s;
+    background: white;
+    border: 3px solid #1a237e;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.card-title {
+    color: #1a237e;
+    font-weight: bold;
+}
+
+/* 📸 Imagen del perro */
+.card-img-top {
+    max-height: 250px;
+    object-fit: cover;
+    border-bottom: 3px solid #1a237e;
+}
+
+/* 📑 Texto de la tarjeta */
+.card-text {
+    font-size: 14px;
+    color: #424242;
+}
+
+/* ✅ Botón de adopción */
+.btn-success {
+    background: #1a237e;
+    border: none;
+    font-weight: bold;
+    transition: 0.3s;
+    color: white;
+    border-radius: 10px;
+}
+
+.btn-success:hover {
+    background: #ffca28;
+    color: #1a237e;
+    transform: scale(1.05);
+}
+
+/* 🐾 Huellas de fondo */
+body::after {
+    content: "";
+    background: url('/images/huellas.png') repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.03;
+    z-index: -1;
+}
+
+/* 🔥 Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
