@@ -12,6 +12,7 @@ use App\Http\Controllers\EstadisticasController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\SolicitudAdopcionController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ViabilidadEstudioVistaController;
 
 
 // Página de inicio
@@ -89,3 +90,8 @@ Route::post('/perfilrefugio/actualizar', [RefugioController::class, 'actualizarP
 
 Route::get('/registroperros', [PerrosController::class, 'create'])->name('perros.create');
 Route::post('/registroperros', [PerrosController::class, 'store'])->name('perros.store');
+
+Route::prefix('viabilidadestudiovista')->group(function () {
+    Route::get('/', [ViabilidadEstudioVistaController::class, 'mostrar'])->name('viabilidadestudiovista.mostrar');
+    Route::post('/subir', [ViabilidadEstudioVistaController::class, 'subir'])->name('viabilidadestudiovista.subir');
+});

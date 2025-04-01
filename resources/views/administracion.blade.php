@@ -10,6 +10,7 @@
         <a href="{{ route('adoptantes.index') }}" class="btn btn-primary rounded-pill shadow px-4 py-2">
             👨‍👩‍👧 Adoptantes
         </a>
+        
         <a href="{{ route('refugios.index') }}" class="btn btn-success rounded-pill shadow px-4 py-2">
             🏠 Refugios
         </a>

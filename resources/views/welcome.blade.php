@@ -79,6 +79,7 @@
         <a href="{{ url('/estadisticas') }}"><i class="fas fa-chart-bar"></i> Estadísticas</a>
         <a href="cuidados"><i class="fas fa-cog"></i> Cuidados</a>
         <a href="administracion"><i class="fas fa-cog"></i> Administración</a>
+        <a href="{{ route('viabilidadestudiovista.mostrar') }}"><i class="fas fa-file-alt"></i> Viabilidad de Estudio</a> <!-- Nuevo botón -->
     </nav>
     
     <!-- Contenido Principal -->
