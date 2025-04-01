@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('cssone/perfil.css') }}">
 </head>
 
+
 <body>
     <div class="profile-container">
         <div class="profile-card">
