@@ -33,7 +33,7 @@
                         <td>{{ $adoptante->email }}</td>
                         <td>{{ $adoptante->telefono }}</td>
                         <td>{{ $adoptante->direccion }}</td>
-                        <td><span class="badge bg-success">{{ $adoptante->chats->count() }}</span></td>
+                        <td>
                         <td>
                             <a href="{{ route('adoptantes.edit', $adoptante->id) }}" class="btn btn-warning btn-sm text-dark shadow-sm">✏ Editar</a>
                             <form action="{{ route('adoptantes.destroy', $adoptante->id) }}" method="POST" class="d-inline">
