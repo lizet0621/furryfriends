@@ -17,7 +17,7 @@ class PerfilController extends Controller
 
         return view('perfil', compact('usuario'));
     }
-
+ 
     public function actualizarPerfil(Request $request)
     {
         $usuario = Auth::user();
