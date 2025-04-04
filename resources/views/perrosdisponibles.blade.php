@@ -32,8 +32,8 @@
                 <input type="text" name="tamanio" id="tamanio" class="form-control" value="{{ request('tamanio') }}" placeholder="Ingrese el tamaño">
             </div>
             <div class="col-md-3">
-                <label for="caracteristica" class="form-label">Otra Característica</label>
-                <input type="text" name="caracteristica" id="caracteristica" class="form-control" value="{{ request('caracteristica') }}" placeholder="Ingrese otra característica">
+                <label for="descripcion" class="form-label">descripcion</label>
+                <input type="text" name="descripcion" id="descripcion" class="form-control" value="{{ request('descripcion') }}" placeholder="Ingrese una descripcion">
             </div>
             <div class="col-md-12 d-flex justify-content-center mt-3">
                 <button type="submit" class="btn btn-primary">Buscar</button>
@@ -80,7 +80,7 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @endforeac
         </div>
     @endif
 </div>
