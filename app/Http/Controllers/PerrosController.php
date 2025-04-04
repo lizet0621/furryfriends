@@ -7,12 +7,21 @@ use App\Models\Perros;
 
 class PerrosController extends Controller
 {
-    public function Create()
+    // Método para listar todos los perros disponibles
+    public function index()
     {
-        return view('registroperros');
+        $perros = Perros::all();
+        return view('Perros.index', compact('Perros')); // Uso correcto con la carpeta en mayúscula
     }
 
-    public function Store(Request $request)
+    // Método para mostrar el formulario de registro
+    public function create()
+    {
+        return view('Perros.create'); // Asegura que el archivo exista en resources/views/Perros/
+    }
+
+    // Método para almacenar un nuevo perro en la base de datos
+    public function store(Request $request)
     {
         $request->validate([
             'nombre' => 'required',
@@ -28,8 +37,10 @@ class PerrosController extends Controller
             'disponibilidad' => 'required',
         ]);
 
+        // Guardar la imagen en storage/app/public/Perros
         $imagenPath = $request->file('imagen')->store('public/Perros');
 
+        // Crear el registro en la base de datos
         Perros::create([
             'nombre' => $request->nombre,
             'edad' => $request->edad,
@@ -45,6 +56,6 @@ class PerrosController extends Controller
             'fecha_adopcion' => $request->fecha_adopcion,
         ]);
 
-        return redirect()->route('Perros.Create')->with('success', '🐕 ¡Perro registrado con éxito! 🎉');
+        return redirect()->route('Perros.create')->with('success', '🐕 ¡Perro registrado con éxito! 🎉');
     }
 }
