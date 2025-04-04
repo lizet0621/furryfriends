@@ -1,47 +1,25 @@
 @extends('layouts.app')
 
+@section('title', 'Subir Seguimiento')
+
 @section('content')
 <div class="container">
-    @isset($Perros) <!-- Verificación aquí -->
-        <h1>Detalles del Perro</h1>
-        <table class="table">
-            <tr>
-                <th>ID</th>
-                <td>{{ $Perros->id }}</td>
-            </tr>
-            <tr>
-                <th>Nombre</th>
-                <td>{{ $Perros->nombre }}</td>
-            </tr>
-            <tr>
-                <th>Raza</th>
-                <td>{{ $Perros->raza }}</td>
-            </tr>
-            <tr>
-                <th>Edad</th>
-                <td>{{ $Perros->edad }}</td>
-            </tr>
-            <tr>
-                <th>Tamaño</th>
-                <td>{{ $Perros->tamanio }}</td>
-            </tr>
-            <tr>
-                <th>Descripción</th>
-                <td>{{ $Perros->descripcion }}</td>
-            </tr>
-            <tr>
-                <th>Rol</th> <!-- Cambio de Refugio a Rol -->
-                <td>{{ $Perros->rol->nombre }}</td>
-            </tr>
-            <tr>
-                <th>Disponible</th>
-                <td>{{ $Perros->disponible ? 'Sí' : 'No' }}</td>
-            </tr>
-        </table>
-    @else
-        <div class="alert alert-danger">No se encontró información del perro</div>
-    @endisset
-    
-    <a href="{{ route('Perros.index') }}" class="btn btn-secondary">Volver</a>
+    <h1>Subir Archivo de Seguimiento</h1>
+
+    <form action="{{ route('SeguimientoVisitas.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+
+        <div class="mb-3">
+            <label for="adoptante_id" class="form-label">ID Adoptante</label>
+            <input type="number" name="adoptante_id" id="adoptante_id" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="archivo" class="form-label">Archivo</label>
+            <input type="file" name="archivo" id="archivo" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Subir</button>
+    </form>
 </div>
 @endsection
