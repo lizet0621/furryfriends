@@ -5,55 +5,43 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    /**
-     * Muestra el formulario de inicio de sesión.
-     */
     public function showLoginForm()
     {
-        return view('auth.login'); // La vista de login en Blade
+        return view('auth.login');
     }
 
-    /**
-     * Maneja la autenticación de los usuarios.
-     */
     public function login(Request $request)
     {
-        // Validación de las credenciales
+        // Validar los datos ingresados
         $credentials = $request->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
-        // Verifica si el usuario existe y las credenciales son correctas
-        $user = User::where('email', $request->email)->first();
+        // Intentar iniciar sesión
+        if (Auth::attempt($credentials)) {
+            // Regenerar sesión para evitar fijación de sesión
+            $request->session()->regenerate();
 
-        if ($user && Hash::check($request->password, $user->password)) {
-            // Autenticar al usuario
-            Auth::login($user);
-
-            // Verifica el tipo de usuario (adoptante o refugio) y redirige a la vista correspondiente
-            if ($user->tipo_usuario == 'adoptante') {
-                return redirect()->intended('/dashboard-adoptante'); // Redirige al dashboard de adoptante
-            } elseif ($user->tipo_usuario == 'refugio') {
-                return redirect()->intended('/dashboard-refugio'); // Redirige al dashboard de refugio
-            }
+            // Redirigir a la vista welcomep después del login
+            return redirect()->route('welcomep');
         }
 
-        // Si las credenciales son incorrectas
-        return back()->withErrors(['email' => 'Credenciales incorrectas'])->withInput();
+        // Si falla la autenticación, devolver con error
+        return back()->withErrors([
+            'email' => 'Las credenciales no coinciden con nuestros registros.',
+        ])->withInput();
     }
 
-    /**
-     * Cierra la sesión del usuario.
-     */
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        
         return redirect('/');
     }
 }
