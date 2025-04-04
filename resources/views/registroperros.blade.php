@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+
 <div class="container">
 <div class="logo-container" style="text-align: absolute;">
             <img src="{{ asset('imagenes/logo.jpg') }}" alt="logo" class="logo" style="width: 100px; height: auto;">
@@ -90,4 +90,3 @@
         <button type="submit" class="btn btn-primary w-100">🐾 Registrar Perro 🐾</button>
     </form>
 </div>
-@endsection
