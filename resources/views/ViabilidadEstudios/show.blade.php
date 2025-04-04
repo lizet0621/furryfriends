@@ -23,4 +23,5 @@
     </table>
     <a href="{{ route('ViabilidadEstudios.index') }}" class="btn btn-secondary">Volver</a>
 </div>
+
 @endsection
