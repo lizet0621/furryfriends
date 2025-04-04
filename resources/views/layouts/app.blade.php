@@ -12,10 +12,6 @@
     
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="{{ route('adoptantes.index') }}">Adoptantes</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('adoptantes.create') }}">Nuevo Adoptante</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('refugios.index') }}">Refugios</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('refugios.create') }}">Nuevo Refugio</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('Perros.index') }}">Perros</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('Perros.create') }}">Nuevo Perro</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('administracion') }}">Administración</a></li>
@@ -37,7 +33,7 @@
 
     {{-- Footer --}}
     <footer class="bg-dark text-light text-center py-3 mt-4">
-        <p class="mb-0">&copy; {{ date('Y') }} Sistema de Adopciones | Todos los derechos reservados</p>
+        <p class="mb-0">&copy; {{ date('Y') }} Furry Friends | Todos los derechos reservados</p>
     </footer>
 
     {{-- Scripts de Bootstrap --}}

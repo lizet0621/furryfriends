@@ -48,11 +48,16 @@
                         <textarea class="form-control" id="descripcion" name="descripcion" rows="3"></textarea>
                     </div>
 
-                    <!-- Campo Refugio -->
+                    <!-- Campo Rol (antes Refugio) -->
                     <div class="col-md-6">
-                        <label for="refugio" class="form-label">Refugio *</label>
-                        <input type="text" class="form-control" id="refugio" name="refugio" required>
-                        <div class="invalid-feedback" id="refugio-error"></div>
+                        <label for="rol_id" class="form-label">Rol *</label>
+                        <select name="rol_id" id="rol_id" class="form-select" required>
+                            <option value="" selected disabled>Seleccione un rol</option>
+                            @foreach($roles as $rol)
+                                <option value="{{ $rol->id }}">{{ $rol->nombre }}</option>
+                            @endforeach
+                        </select>
+                        <div class="invalid-feedback" id="rol_id-error"></div>
                     </div>
 
                     <!-- Campo Disponible -->
@@ -126,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
             Swal.fire({
                 icon: 'success',
                 title: '¡Registro exitoso!',
-                text: 'El Perros ha sido registrado correctamente',
+                text: 'El perro ha sido registrado correctamente',
                 confirmButtonText: 'Aceptar'
             }).then(() => {
                 window.location.href = "{{ route('Perros.index') }}";
@@ -136,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: error.message || 'Ocurrió un error al registrar el Perros',
+                text: error.message || 'Ocurrió un error al registrar el perro',
                 confirmButtonText: 'Entendido'
             });
         } finally {
