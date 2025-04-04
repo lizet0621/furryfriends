@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
 <head>
     <link rel="stylesheet" href="{{ asset('cssone/viabilidadestudiovista.css') }}">
 </head>
-
 <div class="container">
     <h1 class="page-title">Subir Viabilidad de Estudio</h1>
 
@@ -14,7 +12,6 @@
             {{ session('success') }}
         </div>
     @endif
-
     @if($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -24,7 +21,6 @@
             </ul>
         </div>
     @endif
-
     <form action="{{ route('viabilidadestudiovista.subir') }}" method="POST" enctype="multipart/form-data" class="form-upload">
         @csrf
         <div class="form-group">
@@ -33,11 +29,8 @@
         </div>
         <button type="submit" class="btn btn-upload">Subir Documento</button>
     </form>
-
     <hr>
-
     <h2 class="file-title">Buscar Viabilidad de Estudio</h2>
-    
     <!-- Filtro de búsqueda -->
     <form method="GET" action="{{ route('viabilidadestudiovista.mostrar') }}" class="form-search">
         <div class="form-group">
@@ -46,10 +39,8 @@
         </div>
         <button type="submit" class="btn btn-search">Buscar</button>
     </form>
-
     <hr>
-
-    @if(isset($viabilidades) && $viabilidades->count() > 0)
+ @if(isset($viabilidades) && $viabilidades->count() > 0)
         <table class="table table-striped">
             <thead>
                 <tr>
