@@ -11,7 +11,6 @@ class ViabilidadEstudios extends Model
 
     protected $table = 'ViabilidadEstudios';
 
-    
     protected $fillable = [
         'adoptante_id',
         'refugio_id',

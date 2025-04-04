@@ -2,43 +2,51 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * Los atributos que se pueden asignar de forma masiva.
-     *
-     * @var array<int, string>
-     */
+    protected $table = 'users'; 
+
     protected $fillable = [
-        'name',
+        'nombre',
         'email',
         'password',
+        'telefono',
+        'direccion',
+        'ciudad',
+        'capacidad',
+        'horarios',
+        'responsable',
+        'servicios',
+        'id_rol' // Asegurando que coincida con la base de datos
     ];
 
-    /**
-     * Los atributos que deben estar ocultos en arrays.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = ['password', 'remember_token'];
 
     /**
-     * Los atributos que deben convertirse a tipos de datos nativos.
-     *
-     * @var array<string, string>
+     * Mutador para cifrar la contraseña automáticamente al asignarla.
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function setPasswordAttribute($password)
+    {
+        if (!empty($password)) {
+            $this->attributes['password'] = Hash::make($password);
+        }
+    }
+
+    /**
+     * Relación con la tabla roles: un usuario pertenece a un rol.
+     */
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class, 'id_rol');
+    }
+    
+
 }

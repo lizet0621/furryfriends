@@ -9,7 +9,7 @@ class SeguimientoVisitasVista extends Model
 {
     use HasFactory;
 
-    // Definir la tabla y los campos asignables
     protected $table = 'seguimientoVisitas';
-    protected $fillable = ['archivo'];
+
+    protected $fillable = ['archivo', 'activo']; 
 }
