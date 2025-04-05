@@ -45,16 +45,20 @@
                             <td>{{ $seguimiento->id }}</td>
                             <td>{{ $seguimiento->adoptante->nombre }}</td>
                             <td>
-                                <a href="{{ asset('storage/' . $seguimiento->archivo) }}" target="_blank" class="btn btn-outline-info btn-sm">
-                                    <i class="fas fa-eye"></i> Ver Archivo 🐾
-                                </a>
+                                @if (!empty($seguimiento->archivo))
+                                    <a href="{{ asset('storage/' . $seguimiento->archivo) }}" target="_blank" class="btn btn-outline-info btn-sm">
+                                        <i class="fas fa-eye"></i> Ver Archivo 🐾
+                                    </a>
+                                @else
+                                    <span class="text-muted">Sin archivo</span>
+                                @endif
                             </td>
                             <td>
                                 <form action="{{ route('SeguimientoVisitas.destroy', $seguimiento->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este seguimiento?')">
-                                        <i class="fas fa-trash-alt"></i> Eliminar 🐾
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de desactivar este seguimiento?')">
+                                        <i class="fas fa-trash-alt"></i> Desactivar 🐾
                                     </button>
                                 </form>
                             </td>
