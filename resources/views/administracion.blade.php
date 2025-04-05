@@ -9,8 +9,9 @@
             <img src="{{ asset('imagenes/logo.jpg') }}" alt="Logo" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
             <h1 style="margin: 0; font-size: 1.5rem;">Furry Friends</h1>
         </div>
-        <a href="{{ route('welcome') }}" class="btn btn-primary" style="font-weight: bold; background-color: #2980b9; border-color: #2980b9;">
-            ⬅ Regresar al Inicio
+        <form action="{{ url()->previous() }}">
+    <button type="submit" class="btn btn-primary">⬅ Volver</button>
+</form>
         </a>
     </header>
 
@@ -21,7 +22,7 @@
         <p class="lead">Seleccione una de las siguientes opciones para comenzar:</p>
         <div class="d-flex flex-wrap justify-content-center gap-3">
         
-            <a href="{{ route('roles') }}" class="btn btn-custom">
+            <a href="{{ route('Users.index') }}" class="btn btn-custom">
                 🏠 usuarios
             </a>
             <a href="{{ route('Perros.index') }}" class="btn btn-custom">
