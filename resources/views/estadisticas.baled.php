@@ -13,7 +13,8 @@
             <img src="{{ asset('imagenes/logo.jpg') }}" alt="Furry Friends Logo" class="logo">
             <h1>Furry Friends</h1>
         </div>
-        <a href="{{ route('welcome') }}" class="btn btn-primary">Regresar al Inicio</a>
+        <form action="{{ url()->previous() }}">
+    <button type="submit" class="btn btn-primary">⬅ Volver</button>
     </header>
     <div class="container">
         <h1>Estadísticas de Adopciones y Registros</h1>
