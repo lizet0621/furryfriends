@@ -20,8 +20,8 @@
         <!-- 🔹 Contenedor del título -->
         <div class="title-container">
             <h2>Aprende a cuidar a tu perrito con amor </h2>
-            <a href="{{ url('/') }}">
-                <button class="btn-home">🏠 Volver al Inicio</button>
+            <form action="{{ url()->previous() }}">
+    <button type="submit" class="btn btn-primary"></form>🏠 Volver al Inicio</button>
             </a>
         </div>
 
