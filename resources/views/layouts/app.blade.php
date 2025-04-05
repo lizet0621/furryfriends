@@ -12,15 +12,13 @@
     
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="{{ route('adoptantes.index') }}">Adoptantes</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('adoptantes.create') }}">Nuevo Adoptante</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('refugios.index') }}">Refugios</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('refugios.create') }}">Nuevo Refugio</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('Perros.index') }}">Perros</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('Perros.create') }}">Nuevo Perro</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('administracion') }}">Administración</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('ViabilidadEstudios.index') }}">viabilidad</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('ViabilidadEstudios.create') }}">viabilidad</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('Users.index') }}">Usuarios</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('Users.create') }}">Usuarios</a></li>
                 
 
 
