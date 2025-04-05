@@ -6,37 +6,38 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePerrosTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create('Perros', function (Blueprint $table) {
+        Schema::create('perros', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
             $table->integer('edad');
             $table->string('imagenperro')->nullable();
-            $table->string('raza')->nullable();
-            $table->string('color')->nullable();
+            $table->string('raza');
+            $table->string('color');
             $table->enum('tamanio', ['Pequeño', 'Mediano', 'Grande']);
             $table->enum('sexo', ['Macho', 'Hembra']);
             $table->text('historial_clinico')->nullable();
             $table->text('descripcion')->nullable();
-            $table->unsignedBigInteger('refugio_id')->constrained('refugios')->onDelete('cascade');
-            $table->string('disponible')->default(true);
+
+            // Foreign key hacia roles
+            $table->unsignedBigInteger('refugio_id');
+
+            // Asegura que el motor de la tabla sea InnoDB
+            $table->engine = 'InnoDB';
+
+            $table->foreign('refugio_id')
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('cascade');
+
+            $table->boolean('disponible')->default(true);
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists('Perros');
+        Schema::dropIfExists('perros');
     }
-};
+}
