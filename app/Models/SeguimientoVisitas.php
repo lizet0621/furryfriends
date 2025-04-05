@@ -9,11 +9,12 @@ class SeguimientoVisitas extends Model
 {
     use HasFactory;
 
-    protected $table = 'SeguimientoVisitas';
+    protected $table = 'seguimientovisitas';
 
     protected $fillable = [
         'adoptante_id',
         'archivo',
+        'activo',
     ];
 
     public function adoptante()
