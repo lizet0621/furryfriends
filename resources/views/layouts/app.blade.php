@@ -17,6 +17,8 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('administracion') }}">Administración</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('ViabilidadEstudios.index') }}">viabilidad</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('ViabilidadEstudios.create') }}">viabilidad</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('Users.index') }}">Usuarios</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('Users.create') }}">Usuarios</a></li>
                 
 
 
@@ -33,7 +35,7 @@
 
     {{-- Footer --}}
     <footer class="bg-dark text-light text-center py-3 mt-4">
-        <p class="mb-0">&copy; {{ date('Y') }} Furry Friends | Todos los derechos reservados</p>
+        <p class="mb-0">&copy; {{ date('Y') }} Sistema de Adopciones | Todos los derechos reservados</p>
     </footer>
 
     {{-- Scripts de Bootstrap --}}
