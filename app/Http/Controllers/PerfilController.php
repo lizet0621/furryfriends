@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 class PerfilController extends Controller
 {
     public function perfil()
@@ -21,7 +20,6 @@ class PerfilController extends Controller
     public function actualizarPerfil(Request $request)
     {
         $usuario = Auth::user();
-
         $request->validate([
             'nombre' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . $usuario->id,
@@ -35,7 +33,6 @@ class PerfilController extends Controller
             'telefono' => $request->telefono,
             'direccion' => $request->direccion,
         ]);
-
         return redirect()->route('perfil')->with('success', 'Perfil actualizado correctamente.');
     }
 }
