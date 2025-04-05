@@ -1,4 +1,5 @@
 /* Fondo con degradado */
+
 body {
     background: linear-gradient(to bottom, #e3f2fd, #bbdefb);
     font-family: 'Poppins', sans-serif;
@@ -7,7 +8,9 @@ body {
     text-align: center;
 }
 
+
 /* Cabecera sin línea negra */
+
 .header {
     background: #90caf9;
     padding: 15px;
@@ -16,7 +19,9 @@ body {
     justify-content: center;
 }
 
+
 /* Logo circular */
+
 .logo {
     width: 70px;
     height: 70px;
@@ -24,7 +29,9 @@ body {
     margin-right: 15px;
 }
 
+
 /* Contenedor principal */
+
 .main-container {
     max-width: 900px;
     margin: 30px auto;
@@ -34,7 +41,9 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+
 /* Contenedor de título */
+
 .title-container {
     padding: 15px;
     background: #e1f5fe;
@@ -42,7 +51,9 @@ body {
     margin-bottom: 15px;
 }
 
+
 /* Botón volver al inicio */
+
 .btn-home {
     background: #42a5f5;
     color: white;
@@ -57,15 +68,20 @@ body {
     background: #1e88e5;
 }
 
+
 /* Contenedor de información */
+
 .info-container {
     background: white;
     padding: 20px;
     border-radius: 12px;
 }
 
+
 /* Secciones de comentarios y consejos */
-.comments-section, .tips {
+
+.comments-section,
+.tips {
     background: white;
     padding: 15px;
     border-radius: 10px;
@@ -74,21 +90,27 @@ body {
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+
 /* Comentarios */
+
 .comment {
     padding: 10px;
     border-bottom: 1px solid #64b5f6;
     font-size: 1.1rem;
 }
 
+
 /* Consejos sin viñetas */
+
 .tips p {
     font-size: 1.1rem;
     padding: 8px 0;
     text-align: left;
 }
 
+
 /* Botón de YouTube */
+
 .btn-tips {
     background: #e53935;
     color: white;
@@ -103,7 +125,9 @@ body {
     background: #b71c1c;
 }
 
+
 /* Pie de página */
+
 .footer {
     margin-top: 20px;
     padding: 10px;
