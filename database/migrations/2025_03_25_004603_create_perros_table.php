@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePerrosTable extends Migration
 {
-    public function up()
+   public function up()
     {
         Schema::create('perros', function (Blueprint $table) {
             $table->id();
@@ -35,7 +35,6 @@ class CreatePerrosTable extends Migration
             $table->timestamps();
         });
     }
-
     public function down()
     {
         Schema::dropIfExists('perros');
