@@ -4,8 +4,9 @@
 <div class="container">
     
     <!-- 🏠 Botón de regreso a inicio -->
-    <a class="boton-inicio" type="button">
-        <a href="{{ url('/') }}">Inicio</a>
+    <form action="{{ url()->previous() }}">
+    <button type="submit" class="btn btn-primary">⬅ Volver</button>
+</form>
     </i> 
     </a>
 
@@ -80,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-            @endforeac
+            @endforeach
         </div>
     @endif
 </div>
