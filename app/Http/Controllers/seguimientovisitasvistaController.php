@@ -11,8 +11,21 @@ class SeguimientoVisitasVistaController extends Controller
     {
         $query = SeguimientoVisitasVista::where('activo', true);
 
-        if ($request->has('search') && $request->search != '') {
-            $query->where('archivo', 'like', '%' . $request->search . '%');
+        // Filtros multicriterio
+        if ($request->filled('archivo')) {
+            $query->where('archivo', 'like', '%' . $request->archivo . '%');
+        }
+
+        if ($request->filled('rol_id')) {
+            $query->where('rol_id', $request->rol_id);
+        }
+
+        if ($request->filled('fecha_inicio')) {
+            $query->whereDate('created_at', '>=', $request->fecha_inicio);
+        }
+
+        if ($request->filled('fecha_fin')) {
+            $query->whereDate('created_at', '<=', $request->fecha_fin);
         }
 
         $seguimientos = $query->latest()->get();
@@ -23,7 +36,7 @@ class SeguimientoVisitasVistaController extends Controller
     public function subir(Request $request)
     {
         $request->validate([
-            'role_id' => 'required|exists:roles,id',
+            'rol_id' => 'required|exists:roles,id',
             'archivos' => 'required|array',
             'archivos.*' => 'file|mimes:pdf,jpg,png|max:2048',
         ]);
@@ -32,7 +45,7 @@ class SeguimientoVisitasVistaController extends Controller
             foreach ($request->file('archivos') as $archivo) {
                 $ruta = $archivo->store('seguimientovisitas', 'public');
                 SeguimientoVisitasVista::create([
-                    'role_id' => $request->role_id,
+                    'rol_id' => $request->rol_id,
                     'archivo' => $ruta,
                     'activo' => true,
                 ]);
