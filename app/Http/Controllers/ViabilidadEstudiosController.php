@@ -15,14 +15,12 @@ class ViabilidadEstudiosController extends Controller
         $viabilidades = ViabilidadEstudios::all();
         return view('ViabilidadEstudios.index', compact('viabilidades'));
     }
-
     public function create()
     {
         $adoptantes = Adoptante::all();
         $refugios = Refugio::all();
         return view('ViabilidadEstudios.create', compact('adoptantes', 'refugios'));
     }
-
     public function store(Request $request)
     {
         $request->validate([
@@ -42,7 +40,6 @@ class ViabilidadEstudiosController extends Controller
 
         return redirect()->route('ViabilidadEstudios.index')->with('success', 'Viabilidad registrada con éxito.');
     }
-
     public function destroy(ViabilidadEstudios $viabilidadEstudios)
     {
         // Eliminar el archivo del almacenamiento
