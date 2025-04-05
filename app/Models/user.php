@@ -12,10 +12,10 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $table = 'users'; 
+    protected $table = 'users';
 
     protected $fillable = [
-        'nombre',
+        'name',
         'email',
         'password',
         'telefono',
@@ -25,18 +25,24 @@ class User extends Authenticatable
         'horarios',
         'responsable',
         'servicios',
-        'id_rol' // Asegurando que coincida con la base de datos
+        'id_rol',
     ];
 
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
     /**
-     * Mutador para cifrar la contraseña automáticamente al asignarla.
+     * Mutador para cifrar automáticamente la contraseña al asignarla.
      */
-    public function setPasswordAttribute($password)
+    public function setPasswordAttribute($value)
     {
-        if (!empty($password)) {
-            $this->attributes['password'] = Hash::make($password);
+        // Evita volver a hashear si ya está hasheado
+        if (!empty($value) && Hash::needsRehash($value)) {
+            $this->attributes['password'] = Hash::make($value);
+        } else {
+            $this->attributes['password'] = $value;
         }
     }
 
@@ -47,6 +53,4 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class, 'id_rol');
     }
-    
-
 }
