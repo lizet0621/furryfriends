@@ -6,14 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-
 class AuthController extends Controller
 {
     public function showLoginForm()
     {
         return view('auth.login');
     }
-
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -57,7 +55,6 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'role_id' => $request->role_id,
         ]);
-
         return redirect()->route('login')->with('success', 'Registro exitoso. Por favor, inicia sesión.');
     }
 }
