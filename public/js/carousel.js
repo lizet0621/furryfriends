@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     let currentSlide = 0;
     const slides = document.querySelectorAll(".carousel-slide");
     const totalSlides = slides.length;
@@ -13,12 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
         showSlide(currentSlide);
     }
 
-    document.querySelector(".next").addEventListener("click", function () {
+    document.querySelector(".next").addEventListener("click", function() {
         moveSlide(1);
         resetInterval();
     });
 
-    document.querySelector(".prev").addEventListener("click", function () {
+    document.querySelector(".prev").addEventListener("click", function() {
         moveSlide(-1);
         resetInterval();
     });
