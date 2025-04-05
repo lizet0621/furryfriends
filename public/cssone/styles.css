@@ -1,4 +1,5 @@
 /* Estilos CSS integrados para mayor claridad */
+
 :root {
     --primary: #FFB703;
     --secondary: #3498DB;
@@ -13,7 +14,9 @@ body {
     transition: margin-left 0.3s;
 }
 
+
 /* Header */
+
 header {
     display: flex;
     justify-content: space-between;
@@ -24,34 +27,32 @@ header {
     z-index: 100;
 }
 
-
 .logo {
-    width: 60px;  /* Tamaño más pequeño */
-    height: 60px;  /* Mantiene la forma circular */
+    width: 60px;
+    /* Tamaño más pequeño */
+    height: 60px;
+    /* Mantiene la forma circular */
     border-radius: 50%;
     object-fit: cover;
     display: block;
 }
 
-
-
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 10px; /* Espacio entre logo y texto */
+    gap: 10px;
+    /* Espacio entre logo y texto */
 }
-
-
-
 
 .header {
     display: flex;
-    justify-content: space-between; /* Mueve los elementos a los extremos */
+    justify-content: space-between;
+    /* Mueve los elementos a los extremos */
     align-items: center;
-    background-color: #b3e0eb; /* Color de fondo */
+    background-color: #b3e0eb;
+    /* Color de fondo */
     padding: 10px 20px;
 }
-
 
 .header-buttons {
     display: flex;
@@ -71,7 +72,7 @@ header {
 }
 
 .btn-secondary {
-    background-color: #ffb703;
+    background-color: lab(79.36% 14.06 81.39);
     color: white;
 }
 
@@ -81,6 +82,7 @@ header {
 
 
 /* Menú Hamburguesa */
+
 .menu-toggle {
     font-size: 24px;
     cursor: pointer;
@@ -93,10 +95,13 @@ header {
 
 
 /* Estilos del modal */
+
 .modal {
-    display: none; /* Oculto por defecto */
+    display: none;
+    /* Oculto por defecto */
     position: fixed;
-    z-index: 1000; /* Asegura que esté por encima del carrusel */
+    z-index: 1000;
+    /* Asegura que esté por encima del carrusel */
     left: 0;
     top: 0;
     width: 100%;
@@ -105,6 +110,7 @@ header {
     justify-content: center;
     align-items: center;
 }
+
 .modal-content {
     background: white;
     padding: 20px;
@@ -112,16 +118,20 @@ header {
     text-align: center;
     width: 300px;
     position: relative;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
-    border: 2px solid #ddd; /* Borde sutil */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Sombra para destacar */
+    border: 2px solid #ddd;
+    /* Borde sutil */
 }
+
 .close {
     position: absolute;
     top: 10px;
     right: 15px;
     font-size: 24px;
     font-weight: bold;
-    color: #333; /* Color oscuro para visibilidad */
+    color: #333;
+    /* Color oscuro para visibilidad */
     cursor: pointer;
     background: none;
     border: none;
@@ -129,52 +139,72 @@ header {
 }
 
 .close:hover {
-    color: red; /* Cambia de color al pasar el cursor */
-}
-.btn-secondary {
-    cursor: pointer; /* Cambia el cursor a una mano */
+    color: red;
+    /* Cambia de color al pasar el cursor */
 }
 
+.btn-secondary {
+    cursor: pointer;
+    /* Cambia el cursor a una mano */
+}
+
+
 /* Ajustes generales para los botones */
+
 .btn {
-    position: relative; /* Necesario para posicionar el tooltip */
+    position: relative;
+    /* Necesario para posicionar el tooltip */
     padding: 12px 20px;
-    font-size: 18px; /* Tamaño de fuente más grande */
+    font-size: 18px;
+    /* Tamaño de fuente más grande */
     border-radius: 8px;
     transition: background 0.3s;
 }
 
+
 /* Estilo del Tooltip */
+
 .btn::after {
-    content: attr(data-tooltip); /* Obtiene el texto del atributo */
+    content: attr(data-tooltip);
+    /* Obtiene el texto del atributo */
     position: absolute;
-    bottom: 140%; /* Lo coloca encima del botón */
+    bottom: 140%;
+    /* Lo coloca encima del botón */
     left: 50%;
     transform: translateX(-50%);
-    
     /* Diseño del tooltip */
-    background: #222222; /* Fondo oscuro */
-    color: #fff; /* Texto blanco */
-    padding: 12px 16px; /* Espaciado */
-    border-radius: 8px; /* Bordes redondeados */
-    font-size: 16px; /* Texto más grande */
-    white-space: nowrap; /* Evita que el texto se corte */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Sombra elegante */
-
-    opacity: 0; /* Oculto por defecto */
+    background: #222222;
+    /* Fondo oscuro */
+    color: #fff;
+    /* Texto blanco */
+    padding: 12px 16px;
+    /* Espaciado */
+    border-radius: 8px;
+    /* Bordes redondeados */
+    font-size: 16px;
+    /* Texto más grande */
+    white-space: nowrap;
+    /* Evita que el texto se corte */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    /* Sombra elegante */
+    opacity: 0;
+    /* Oculto por defecto */
     visibility: hidden;
-    transition: opacity 0.1s ease-in-out; /* Sin demora */
+    transition: opacity 0.1s ease-in-out;
+    /* Sin demora */
 }
 
+
 /* Mostrar el tooltip al pasar el cursor */
+
 .btn:hover::after {
     opacity: 1;
     visibility: visible;
 }
 
 
-
 /* Menú Lateral */
+
 .side-menu {
     height: 100vh;
     width: 0;
@@ -184,7 +214,7 @@ header {
     background-color: white;
     overflow-x: hidden;
     transition: 0.3s;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     z-index: 99;
     padding-top: 70px;
 }
@@ -215,21 +245,25 @@ header {
     width: 250px;
 }
 
+
 /* Contenido Principal */
+
 main {
     padding: 20px;
     margin-top: 20px;
     text-align: center;
 }
 
+
 /* Carrusel */
+
 .carousel-container {
     position: relative;
     max-width: 800px;
     margin: 0 auto;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-slide {
@@ -251,7 +285,7 @@ main {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgba(255, 255, 255, 0.7);
     color: var(--dark);
     border: none;
     border-radius: 50%;
@@ -274,6 +308,7 @@ main {
 
 
 /* Botones */
+
 .action-buttons {
     display: flex;
     justify-content: center;
@@ -308,10 +343,12 @@ main {
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+
 /* Footer */
+
 footer {
     text-align: center;
     padding: 20px;
@@ -319,12 +356,13 @@ footer {
     background-color: #f0f0f0;
 }
 
+
 /* Responsive */
+
 @media (max-width: 768px) {
     .carousel-slide img {
         height: 300px;
     }
-    
     .action-buttons {
         flex-direction: column;
         align-items: center;
