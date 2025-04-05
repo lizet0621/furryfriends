@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Refugio extends Model
+class Refugio extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $fillable = [
         'nombre',
@@ -26,5 +27,12 @@ class Refugio extends Model
 
     protected $hidden = [
         'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'capacidad' => 'integer',
+        'horarios' => 'array',
+        'servicios' => 'array',
     ];
 }
