@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class SeguimientoVisitasVista extends Model
 {
     use HasFactory;
-
     protected $table = 'seguimientoVisitas';
-
     protected $fillable = ['archivo', 'activo']; 
 }
