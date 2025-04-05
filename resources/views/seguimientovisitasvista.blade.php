@@ -3,17 +3,24 @@
 @section('content')
 
 <head>
-    <link rel="stylesheet" href="{{ asset('cssone/seguimientovisitasvista.css') }}">
+<link rel="stylesheet" href="{{ asset('cssone/seguimientovisitasvista.css') }}">
 </head>
 
-<div class="top-bar">
-    <a href="{{ route('welcome') }}" class="btn-back">← Volver al inicio</a>
-    <div class="logo-container">
-        <img src="{{ asset('imagenes/logo.jpg') }}" alt="logo" class="logo" style="width: 100px; height: auto;">
-    </div>
-</div>
 
+
+
+<form action="{{ url()->previous() }}">
+    <button type="submit" class="btn btn-primary">⬅ Volver</button>
+</form>
 <div class="container">
+
+
+
+    <!-- Botón para volver al inicio -->
+    
+
+
+
     <h1 class="page-title">Subir Seguimiento de Visitas</h1>
 
     @if(session('success'))
@@ -22,42 +29,38 @@
 
     @if($errors->any())
         <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+            <ul>@foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach</ul>
         </div>
     @endif
 
     <form action="{{ route('seguimientovisitasvista.subir') }}" method="POST" enctype="multipart/form-data" class="form-upload">
         @csrf
-        @if(auth()->check())
-            <input type="hidden" name="role_id" value="{{ auth()->user()->id_rol }}">
-        @endif
-
-        <div class="mb-3">
-            <label for="archivos" class="label-input">Seleccionar Documento (PDF, JPG, PNG)</label>
+        <div class="form-group">
+            <label for="archivos" class="label-input">Seleccionar Archivos</label>
             <input type="file" class="form-control" name="archivos[]" multiple required>
         </div>
-
-        <button type="submit" class="btn btn-upload">Subir Documento</button>
+        <div class="btn-container">
+            <button type="submit" class="btn-upload">Subir Archivos</button>
+        </div>
     </form>
 
     <hr>
 
-    <h2 class="file-title">Buscar Documentos</h2>
+    <h2 class="file-title">Buscar Seguimientos</h2>
+
     <form method="GET" action="{{ route('seguimientovisitasvista.mostrar') }}" class="form-search">
         <div class="form-group">
-            <label for="search" class="label-input">Buscar por nombre de archivo</label>
-            <input type="text" class="form-control" name="search" placeholder="Ej: informe">
+            <label for="archivo" class="label-input">Nombre del archivo</label>
+            <input type="text" class="form-control" name="archivo" value="{{ request('archivo') }}">
         </div>
-        <button type="submit" class="btn btn-search">Buscar</button>
+
+        <div class="btn-container">
+            <button type="submit" class="btn-search">🔍 Buscar</button>
+            <a href="{{ route('seguimientovisitasvista.mostrar') }}" class="btn-clear">🧹 Limpiar</a>
+        </div>
     </form>
 
     <hr>
-
-    <h2 class="file-title">Documentos de Seguimiento de Visitas</h2>
 
     @if(isset($seguimientos) && $seguimientos->count() > 0)
         <table class="table table-striped">
@@ -66,26 +69,20 @@
                     <th>ID</th>
                     <th>Archivo</th>
                     <th>Fecha</th>
-                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($seguimientos as $seguimiento)
+                @foreach($seguimientos as $item)
                     <tr>
-                        <td>{{ $seguimiento->id }}</td>
-                        <td><a href="{{ asset('storage/' . $seguimiento->archivo) }}" target="_blank">{{ basename($seguimiento->archivo) }}</a></td>
-                        <td>{{ $seguimiento->created_at->format('d/m/Y') }}</td>
-                        <td>
-                            <a href="{{ asset('storage/' . $seguimiento->archivo) }}" download class="btn btn-primary btn-sm">
-                                <i class="fas fa-download"></i> Descargar
-                            </a>
-                        </td>
+                        <td>{{ $item->id }}</td>
+                        <td><a href="{{ asset('storage/' . $item->archivo) }}" target="_blank">{{ basename($item->archivo) }}</a></td>
+                        <td>{{ $item->created_at->format('d/m/Y') }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     @else
-        <p>No se encontraron documentos.</p>
+        <p class="text-center">No se encontraron resultados.</p>
     @endif
 </div>
 
