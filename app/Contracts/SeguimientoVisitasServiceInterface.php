@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Contracts;
-
 use App\Models\SeguimientoVisitas;
-
 interface SeguimientoVisitasServiceInterface
 {
     public function listarSeguimientos();

@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Contracts;
-
 use App\Models\Perros;
-
 interface PerrosServiceInterface
 {
     public function listarPerros();
