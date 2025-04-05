@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Perros;
 use Illuminate\Http\Request;
-
 class PerrosDisponiblesController extends Controller
 {
-    public function mostrar(Request $request)
+       public function mostrar(Request $request)
     {
         $query = Perros::where('disponible', 'si')->with('refugio');
 
@@ -23,9 +22,7 @@ class PerrosDisponiblesController extends Controller
         if ($request->filled('caracteristica')) {
             $query->where('caracteristica', 'like', '%' . $request->caracteristica . '%');
         }
-
         $perros = $query->get();
-
         return view('perrosdisponibles', compact('perros'));
     }
 }
