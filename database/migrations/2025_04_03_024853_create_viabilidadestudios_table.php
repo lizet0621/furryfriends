@@ -10,15 +10,21 @@ return new class extends Migration
     {
         Schema::create('ViabilidadEstudios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('adoptante_id')->constrained('roles')->onDelete('cascade'); // Relacionado con roles
-            $table->foreignId('refugio_id')->constrained('roles')->onDelete('cascade');   // Relacionado con roles
-            $table->string('archivo'); // Guardará la ruta del archivo
+            $table->unsignedBigInteger('rol_id')->nullable(); // Relación con roles
+            $table->string('archivo');
+            $table->boolean('activo')->default(true); // Campo para eliminación lógica
             $table->timestamps();
+
+            // Clave foránea apuntando a roles
+            $table->foreign('rol_id')
+                  ->references('id')
+                  ->on('roles')
+                  ->onDelete('cascade');
         });
     }
 
     public function down(): void
     {
         Schema::dropIfExists('ViabilidadEstudios');
-}
+    }
 };
