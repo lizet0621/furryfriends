@@ -2,9 +2,9 @@
 function toggleMenu() {
     const menu = document.getElementById("sideMenu");
     const mainContent = document.querySelector(".main-content");
-    
+
     menu.classList.toggle("menu-open");
-    
+
     if (menu.classList.contains("menu-open")) {
         mainContent.style.marginLeft = "280px";
         document.body.style.overflow = "hidden";
@@ -30,17 +30,17 @@ function toggleMenu() {
 // Inicialización
 document.addEventListener("DOMContentLoaded", () => {
     showSlide(0);
-    
+
     // Cambio automático cada 5 segundos
     setInterval(() => moveSlide(1), 5000);
-    
+
     // Cerrar menú al hacer clic fuera
     document.addEventListener("click", (e) => {
         const menu = document.getElementById("sideMenu");
         const menuToggle = document.querySelector(".menu-toggle");
-        
-        if (menu.classList.contains("menu-open") && 
-            !menu.contains(e.target) && 
+
+        if (menu.classList.contains("menu-open") &&
+            !menu.contains(e.target) &&
             !menuToggle.contains(e.target)) {
             closeMenu();
         }
