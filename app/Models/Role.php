@@ -9,7 +9,6 @@ class Role extends Model
 {
     use HasFactory;
 protected $table = 'roles'; // Nombre de la tabla en la base de datos
-
     // Relación con User
     public function users()
     {
