@@ -1,7 +1,7 @@
 /* Estilos Globales */
 body {
     font-family: Arial, sans-serif;
-    background-color: #e0efff; /* Azul clarito */
+    background-color: #cce0f5; /* Fondo azul clarito */
     color: #333;
     margin: 0;
     padding: 0;
@@ -16,6 +16,7 @@ body {
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     position: relative;
+    text-align: center;
 }
 
 /* Botón para volver al inicio */
@@ -62,43 +63,12 @@ body {
 }
 
 /* Formulario */
-.form-upload {
-    background-color: #f1f1f1; /* Amarillo más oscuro */
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-}
-
-/* Botón de subir archivo */
-.btn-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-.btn-upload {
-    background-color: #4d96ff;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.btn-upload:hover {
-    background-color: #357ae8;
-}
-
-/* Formulario de búsqueda */
-.form-search {
+.form-upload, .form-search {
     background-color: #f2f2f2;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
 }
 
 .label-input {
@@ -115,27 +85,26 @@ body {
     background-color: #fafafa;
 }
 
-/* Botones de búsqueda */
-.btn-group {
+/* Contenedor de botones */
+.btn-container {
     display: flex;
     justify-content: center;
     gap: 10px;
     margin-top: 10px;
 }
 
-.btn-small {
+/* Botones */
+.btn-upload, .btn-search, .btn-clear {
     background-color: #4d96ff;
     color: white;
-    padding: 6px 12px;
+    padding: 8px 16px;
     border: none;
     border-radius: 8px;
     font-size: 14px;
     cursor: pointer;
-    text-align: center;
-    display: inline-block;
 }
 
-.btn-small:hover {
+.btn-upload:hover, .btn-search:hover, .btn-clear:hover {
     background-color: #357ae8;
 }
 
@@ -151,7 +120,7 @@ body {
 
 .table th, .table td {
     padding: 15px;
-    text-align: left;
+    text-align: center;
     font-size: 16px;
 }
 
@@ -161,11 +130,18 @@ body {
 }
 
 .table a {
-    color: #d0e914;
+    color: #f2d562;
     font-weight: bold;
 }
 
 .table a:hover {
     color: #4d96ff;
     text-decoration: underline;
+}
+
+/* Centrar texto de "No se encontraron resultados" */
+.text-center {
+    text-align: center;
+    font-size: 18px;
+    color: #555;
 }
