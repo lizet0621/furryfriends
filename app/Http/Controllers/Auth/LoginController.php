@@ -3,57 +3,53 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    /**
-     * Muestra el formulario de inicio de sesión.
-     */
     public function showLoginForm()
     {
-        return view('auth.login'); // La vista de login en Blade
+        if (Auth::check()) {
+            return match (Auth::user()->id_rol) {
+                1 => redirect()->route('vistaadoptante'),
+                2=> redirect()->route('vistarefugio'),
+                3 => redirect()->route('vistarefugio'),
+                4=> redirect()->route('vistaradmin'),
+                default => dd('Rol desconocido: ' . Auth::user()->id_rol),
+            };
+            
+        }
+        return view('auth.login');
     }
 
-    /**
-     * Maneja la autenticación de los usuarios.
-     */
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        // Validación de las credenciales
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+        $credentials = $request->getCredentials();
+       
 
-        // Verifica si el usuario existe y las credenciales son correctas
-        $user = User::where('email', $request->email)->first();
 
-        if ($user && Hash::check($request->password, $user->password)) {
-            // Autenticar al usuario
-            Auth::login($user);
-
-            // Verifica el tipo de usuario (adoptante o refugio) y redirige a la vista correspondiente
-            if ($user->tipo_usuario == 'adoptante') {
-                return redirect()->intended('/dashboard-adoptante'); // Redirige al dashboard de adoptante
-            } elseif ($user->tipo_usuario == 'refugio') {
-                return redirect()->intended('/dashboard-refugio'); // Redirige al dashboard de refugio
-            }
+        if (!Auth::validate($credentials)) {
+            return redirect()->route('login')
+                ->withErrors(trans('auth.failed'));
         }
 
-        // Si las credenciales son incorrectas
-        return back()->withErrors(['email' => 'Credenciales incorrectas'])->withInput();
+        $user = Auth::getProvider()->retrieveByCredentials($credentials);
+        Auth::login($user);
+
+        return $this->authenticated($request, $user);
     }
 
-    /**
-     * Cierra la sesión del usuario.
-     */
-    public function logout()
+    protected function authenticated(Request $request, $user)
     {
-        Auth::logout();
-        return redirect('/');
+        return match (Auth::user()->id_rol) {
+            1 => redirect()->route('vistaadoptante'),
+            2=> redirect()->route('vistarefugio'),
+            3 => redirect()->route('vistarefugio'),
+            4=> redirect()->route('vistaadmin'),
+            default => dd('Rol desconocido: ' . Auth::user()->id_rol),
+        };
+        
     }
 }
