@@ -16,12 +16,10 @@ class ViabilidadEstudios extends Model
         'refugio_id',
         'archivo',
     ];
-
     public function adoptante()
     {
         return $this->belongsTo(Adoptante::class);
     }
-
     public function refugio()
     {
         return $this->belongsTo(Refugio::class);
