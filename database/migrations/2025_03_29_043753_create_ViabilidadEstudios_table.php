@@ -10,14 +10,16 @@ return new class extends Migration
     {
         Schema::create('ViabilidadEstudios', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('adoptante_id');
-            $table->unsignedBigInteger('refugio_id');
-            $table->string('archivo'); // Guardará la ruta del archivo
+            $table->unsignedBigInteger('rol_id')->nullable(); // Relación con roles
+            $table->string('archivo');
+            $table->boolean('activo')->default(true); // Campo para eliminación lógica
             $table->timestamps();
 
-            // Relaciones
-            $table->foreign('adoptante_id')->references('id')->on('adoptantes')->onDelete('cascade');
-            $table->foreign('refugio_id')->references('id')->on('refugios')->onDelete('cascade');
+            // Clave foránea apuntando a roles
+            $table->foreign('rol_id')
+                  ->references('id')
+                  ->on('roles')
+                  ->onDelete('cascade');
         });
     }
 
