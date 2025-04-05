@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Contracts;
-
 use App\Models\ViabilidadEstudio;
-
 interface ViabilidadEstudioServiceInterface
 {
     public function listarEstudios();
