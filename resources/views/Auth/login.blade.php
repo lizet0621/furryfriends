@@ -47,7 +47,7 @@
                     <br>
                     <center>
                         <p>Inicia sesión con <a href="#">número de teléfono</a></p>
-                        <p>¿No tienes cuenta? <a href="{{ route('roles') }}">Regístrate aquí</a></p>
+                        <p>¿No tienes cuenta? <a href="{{ route('register.natural') }}">Regístrate aquí</a></p>
                         <a href="{{ route('welcome') }}">Olvidaste tu contraseña</a>
                     </center>
                 </form>
