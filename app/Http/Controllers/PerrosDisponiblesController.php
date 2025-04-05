@@ -24,7 +24,6 @@ class PerrosDisponiblesController extends Controller
             $query->where('caracteristica', 'like', '%' . $request->caracteristica . '%');
         }
 
-        
         $perros = $query->get();
 
         return view('perrosdisponibles', compact('perros'));
