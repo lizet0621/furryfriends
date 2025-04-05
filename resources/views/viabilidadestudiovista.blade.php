@@ -7,6 +7,11 @@
 </head>
 
 <div class="container">
+    <!-- Botón para volver al inicio -->
+    <form action="{{ url()->previous() }}">
+    <button type="submit" class="btn btn-primary">⬅ Volver</button>
+</form>
+
     <h1 class="page-title">Subir Viabilidad de Estudio</h1>
 
     @if(session('success'))
@@ -31,20 +36,24 @@
             <label for="archivo" class="label-input">Seleccionar Documento (PDF)</label>
             <input type="file" class="form-control" name="archivo" required>
         </div>
-        <button type="submit" class="btn btn-upload">Subir Documento</button>
+        <div class="btn-container">
+            <button type="submit" class="btn-upload">Subir</button>
+        </div>
     </form>
 
     <hr>
 
     <h2 class="file-title">Buscar Viabilidad de Estudio</h2>
-    
-    <!-- Filtro de búsqueda -->
+
     <form method="GET" action="{{ route('viabilidadestudiovista.mostrar') }}" class="form-search">
         <div class="form-group">
             <label for="search" class="label-input">Buscar por Nombre de Documento</label>
-            <input type="text" class="form-control" name="search" placeholder="Buscar...">
+            <input type="text" class="form-control" name="search" placeholder="Buscar..." value="{{ request('search') }}">
         </div>
-        <button type="submit" class="btn btn-search">Buscar</button>
+        <div class="btn-group">
+            <button type="submit" class="btn-small">🔍 Buscar</button>
+            <a href="{{ route('viabilidadestudiovista.mostrar') }}" class="btn-small">🧹 Limpiar</a>
+        </div>
     </form>
 
     <hr>
@@ -55,15 +64,13 @@
                 <tr>
                     <th>ID</th>
                     <th>Archivo</th>
-                    <th>Fecha</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($viabilidades as $viabilidad)
                     <tr>
                         <td>{{ $viabilidad->id }}</td>
-                        <td><a href="{{ asset('storage/' . $viabilidad->archivo) }}" target="_blank">Ver PDF</a></td>
-                        <td>{{ $viabilidad->created_at->format('d/m/Y') }}</td>
+                        <td><a href="{{ asset('storage/' . $viabilidad->archivo) }}" target="_blank">{{ basename($viabilidad->archivo) }}</a></td>
                     </tr>
                 @endforeach
             </tbody>
@@ -72,4 +79,5 @@
         <p>No se encontraron resultados.</p>
     @endif
 </div>
+
 @endsection
