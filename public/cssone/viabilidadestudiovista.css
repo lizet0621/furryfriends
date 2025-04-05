@@ -1,13 +1,17 @@
 /* Estilos Globales */
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff; /* Azul claro pastel */
+    background-color: #e0efff;
+    /* Azul clarito */
     color: #333;
     margin: 0;
     padding: 0;
 }
 
-/* Estilo de la página */
+
+/* Contenedor */
+
 .container {
     max-width: 900px;
     margin: 40px auto;
@@ -15,17 +19,42 @@ body {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
+
+/* Botón para volver al inicio */
+
+.btn-home {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #4d96ff;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-home:hover {
+    background-color: #357ae8;
+}
+
+
 /* Títulos */
-.page-title, .file-title {
-    color: #4d96ff; /* Azul pastel */
+
+.page-title,
+.file-title {
+    color: #4d96ff;
     font-size: 30px;
-    margin-bottom: 20px;
     text-align: center;
 }
 
+
 /* Mensajes de éxito y error */
+
 .alert {
     border-radius: 5px;
     padding: 15px;
@@ -43,30 +72,56 @@ body {
     color: #721c24;
 }
 
-.alert ul {
-    list-style-type: none;
-    padding: 0;
-}
 
-.alert li {
-    margin-bottom: 5px;
-}
+/* Formulario */
 
-/* Formulario de carga de archivos */
 .form-upload {
-    background-color: #ffeb8a; /* Amarillo pastel */
+    background-color: #f1f1f1;
+    /* Amarillo más oscuro */
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 30px;
 }
 
-.form-group {
+
+/* Botón de subir archivo */
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.btn-upload {
+    background-color: #4d96ff;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-upload:hover {
+    background-color: #357ae8;
+}
+
+
+/* Formulario de búsqueda */
+
+.form-search {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .label-input {
     font-size: 18px;
-    color: #4d96ff; /* Azul pastel */
+    color: #4d96ff;
 }
 
 .form-control {
@@ -78,25 +133,35 @@ body {
     background-color: #fafafa;
 }
 
-.btn-upload {
-    background-color: #4d96ff; /* Azul pastel */
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin-top: 20px;
+
+/* Botones de búsqueda */
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
 }
 
-.btn-upload:hover {
+.btn-small {
+    background-color: #4d96ff;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+}
+
+.btn-small:hover {
     background-color: #357ae8;
 }
 
+
 /* Estilo de la tabla */
+
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -106,19 +171,20 @@ body {
     background-color: #f9f9f9;
 }
 
-.table th, .table td {
+.table th,
+.table td {
     padding: 15px;
     text-align: left;
     font-size: 16px;
 }
 
 .table th {
-    background-color: #4d96ff; /* Azul pastel */
+    background-color: #4d96ff;
     color: white;
 }
 
 .table a {
-    color: #ffeb8a; /* Amarillo pastel */
+    color: #d0e914;
     font-weight: bold;
 }
 
