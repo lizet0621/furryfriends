@@ -17,8 +17,7 @@ return new class extends Migration
             $table->integer('last_activity');
         });
     }
-
-    public function down(): void
+   public function down(): void
     {
         Schema::dropIfExists('sessions');
     }
