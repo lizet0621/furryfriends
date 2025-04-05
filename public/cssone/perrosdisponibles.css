@@ -1,12 +1,14 @@
 /* 🎨 Fuente moderna */
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap');
 body {
     background: linear-gradient(180deg, #0d47a1, #1976d2);
     font-family: 'Raleway', sans-serif;
 }
 
+
 /* 🏠 Botón de regreso a Inicio */
+
 .btn-back {
     position: absolute;
     top: 15px;
@@ -30,13 +32,17 @@ body {
     transform: scale(1.1);
 }
 
+
 /* Asegurar que el container no se vea raro con el botón */
+
 .container {
     position: relative;
     padding-top: 50px;
 }
 
+
 /* 🏡 Contenedor principal */
+
 .container {
     background: white;
     border-radius: 15px;
@@ -47,7 +53,9 @@ body {
     animation: fadeIn 1s ease-in-out;
 }
 
+
 /* 🔍 Filtros de búsqueda */
+
 .filter-container {
     background: #1a237e;
     padding: 20px;
@@ -64,7 +72,9 @@ body {
     margin-bottom: 15px;
 }
 
+
 /* 📦 Campos de entrada */
+
 .filter-container input {
     border: 2px solid #ffca28;
     border-radius: 8px;
@@ -72,7 +82,9 @@ body {
     width: 100%;
 }
 
+
 /* 🎯 Botón de búsqueda */
+
 .btn-primary {
     background: #ffca28;
     color: #1a237e;
@@ -89,7 +101,9 @@ body {
     transform: scale(1.05);
 }
 
+
 /* 🐶 Tarjetas de los perros */
+
 .card {
     border-radius: 15px;
     overflow: hidden;
@@ -110,20 +124,26 @@ body {
     font-weight: bold;
 }
 
+
 /* 📸 Imagen del perro */
+
 .card-img-top {
     max-height: 250px;
     object-fit: cover;
     border-bottom: 3px solid #1a237e;
 }
 
+
 /* 📑 Texto de la tarjeta */
+
 .card-text {
     font-size: 14px;
     color: #424242;
 }
 
+
 /* ✅ Botón de adopción */
+
 .btn-success {
     background: #1a237e;
     border: none;
@@ -139,7 +159,9 @@ body {
     transform: scale(1.05);
 }
 
+
 /* 🐾 Huellas de fondo */
+
 body::after {
     content: "";
     background: url('/images/huellas.png') repeat;
@@ -152,13 +174,27 @@ body::after {
     z-index: -1;
 }
 
+
 /* 🔥 Animaciones */
+
 @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 @keyframes slideIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
