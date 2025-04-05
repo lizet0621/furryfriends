@@ -12,29 +12,30 @@ class RegisterController extends Controller
     /**
      * Handle a registration request for the application.
      */
-    public function register(RegisterRequest $request)
+
+    public function showpNatural()
     {
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'id_rol' => 2, // Por defecto, Persona Natural
-            'telefono' => $request->telefono,
-            'direccion' => $request->direccion,
-            'ciudad' => $request->ciudad,
-            'capacidad' => $request->capacidad,
-            'horarios' => $request->horarios,
-            'responsable' => $request->responsable,
-            'servicios' => $request->servicios,
-        ]);
-    
-        return redirect('/login')->with('success', "Cuenta registrada exitosamente.");
+         return view('auth.registerpNatural');
+    }
+
+    public function showAdop()
+    {
+         return view('auth.registerAdoptante');
+    }
+    public function showRefugio()
+    {
+         return view('auth.registerRefugio');
+    }
+
+
+    public function register(RegisterRequest $request){
+        
+        User::create($request->validated());
+
+        return redirect('/login')->with('success', "Account successfully registered.");
     }
 
     
-    public function show()
-    {
-        return view('auth.registerpNatural');
-    }
+
 
 }
