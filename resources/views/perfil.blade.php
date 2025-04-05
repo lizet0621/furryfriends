@@ -12,7 +12,9 @@
     <title>Perfil de Usuario</title>
     <link rel="stylesheet" href="{{ asset('cssone/perfil.css') }}">
 </head>
-
+<form action="{{ url()->previous() }}">
+    <button type="submit" class="btn btn-primary">⬅ Volver</button>
+</form>
 
 <body>
     <div class="profile-container">
