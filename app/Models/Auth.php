@@ -26,7 +26,6 @@ return [
             'model' => App\Models\Role::class, // Usar el modelo Role en lugar de User
         ],
     ],
-
     'passwords' => [
         'users' => [
             'provider' => 'users',
@@ -35,7 +34,5 @@ return [
             'throttle' => 60,
         ],
     ],
-
     'password_timeout' => 10800,
-
 ];
