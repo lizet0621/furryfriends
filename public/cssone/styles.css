@@ -71,7 +71,7 @@ header {
 }
 
 .btn-secondary {
-    background-color: #ffb703;
+    background-color: lab(79.36% 14.06 81.39);
     color: white;
 }
 
