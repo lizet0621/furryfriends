@@ -14,8 +14,10 @@ class RoleSeeder extends Seeder
             ['id' => 1, 'nombre' => 'adoptante'],
             ['id' => 2, 'nombre' => 'refugionatural'],
             ['id' => 3, 'nombre' => 'refugiofisico'],
-            ['id' => 4, 'nombre' => 'administrador'],
+            ['id' => 4, 'nombre' => 'admin'],
         ]);
+
+        // Agregar Roles:   php artisan db:seed --class=RoleSeeder
         
     }
 }
