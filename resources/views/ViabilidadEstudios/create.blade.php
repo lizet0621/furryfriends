@@ -1,30 +1,38 @@
 @extends('layouts.app')
 
-@section('title', 'Editar Viabilidad de Estudio')
+@section('title', 'Nueva Viabilidad')
 
 @section('content')
 <div class="container">
-    <h1>Editar Viabilidad de Estudio</h1>
-    <form action="{{ route('ViabilidadEstudios.update', $viabilidad->id) }}" method="POST">
+    <h1>Registrar Nueva Viabilidad</h1>
+
+    <form action="{{ route('ViabilidadEstudios.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
-        <div class="form-group">
-            <label for="adoptante_id">Adoptante</label>
-            <select class="form-control" id="adoptante_id" name="adoptante_id" required>
+
+        <div class="mb-3">
+            <label for="adoptante_id" class="form-label">Adoptante</label>
+            <select name="adoptante_id" id="adoptante_id" class="form-control">
                 @foreach($adoptantes as $adoptante)
-                    <option value="{{ $adoptante->id }}" {{ $adoptante->id == $viabilidad->adoptante_id ? 'selected' : '' }}>{{ $adoptante->nombre }}</option>
+                    <option value="{{ $adoptante->id }}">{{ $adoptante->nombre }}</option>
                 @endforeach
             </select>
         </div>
-        <div class="form-group">
-            <label for="resultado">Resultado</label>
-            <input type="text" class="form-control" id="resultado" name="resultado" value="{{ $viabilidad->resultado }}" required>
+
+        <div class="mb-3">
+            <label for="refugio_id" class="form-label">Refugio</label>
+            <select name="refugio_id" id="refugio_id" class="form-control">
+                @foreach($refugios as $refugio)
+                    <option value="{{ $refugio->id }}">{{ $refugio->nombre }}</option>
+                @endforeach
+            </select>
         </div>
-        <div class="form-group">
-            <label for="observaciones">Observaciones</label>
-            <textarea class="form-control" id="observaciones" name="observaciones" required>{{ $viabilidad->observaciones }}</textarea>
+
+        <div class="mb-3">
+            <label for="archivo" class="form-label">Archivo</label>
+            <input type="file" name="archivo" id="archivo" class="form-control">
         </div>
-        <button type="submit" class="btn btn-primary">Actualizar</button>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
 </div>
 @endsection
