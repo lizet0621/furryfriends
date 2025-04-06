@@ -26,6 +26,7 @@ return [
             'model' => App\Models\Role::class, // Usar el modelo Role en lugar de User
         ],
     ],
+    
 
     'passwords' => [
         'users' => [
