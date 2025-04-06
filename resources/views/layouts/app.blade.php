@@ -20,8 +20,6 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('Users.index') }}">Usuarios</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('Users.create') }}">Usuarios</a></li>
                 
-
-
                 
             </ul>
         </div>
