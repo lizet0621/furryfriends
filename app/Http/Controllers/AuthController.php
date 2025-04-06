@@ -58,6 +58,7 @@ class AuthController extends Controller
             'role_id' => $request->role_id,
         ]);
 
+        
         return redirect()->route('login')->with('success', 'Registro exitoso. Por favor, inicia sesión.');
     }
 }
