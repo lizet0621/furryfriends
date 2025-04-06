@@ -55,6 +55,7 @@ class SeguimientoVisitasVistaController extends Controller
         return redirect()->route('seguimientovisitasvista.mostrar')->with('success', 'Documentos subidos con éxito.');
     }
 
+    
     public function desactivar($id)
     {
         $seguimiento = SeguimientoVisitasVista::findOrFail($id);
