@@ -17,27 +17,22 @@ class Perros extends Model
         'raza',
         'tamanio',
         'descripcion',
-        'refugio_id',
+        'user_id',         // <--- Cambiado de 'refugio_id' a 'user_id'
         'disponible',
         'imagenperro',
         'sexo',
         'historial_clinico',
         'color',
-
     ];
 
     // RELACIÓN CON USUARIO REFUGIO
-    public function refugio()
-    {
-   return $this->belongsTo(Refugio::class, 'refugio_id'); // Ajusta 'refugio_id' si usas otro nombre de clave foránea
-    }
-
     public function scopeDisponibles($query)
     {
         return $query->where('disponible', 1);
     }
-    public function rol()
-{
-    return $this->belongsTo(Role::class,'id_rol');
-}
+    
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'user_id'); // Relación con el usuario que registró el perro
+    }
 }
