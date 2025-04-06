@@ -23,6 +23,7 @@ class Adoptante extends Authenticatable
         'password',
     ];
 
+    
     // Hash automático de la contraseña
     public function setPasswordAttribute($value)
     {
