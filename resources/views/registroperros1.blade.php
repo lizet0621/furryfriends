@@ -7,8 +7,8 @@
     </div>
 
     <form action="{{ url()->previous() }}">
-    <button type="submit" class="btn btn-primary">⬅ Volver</button>
-</form>
+        <button type="submit" class="btn btn-primary">⬅ Volver</button>
+    </form>
 
     <h2 class="mb-4 text-center" style="color: #0056b3;">🐶 Furry Friends 🐶</h2>
 
@@ -67,7 +67,7 @@
 
         <div class="mb-3">
             <label class="form-label">🖼 Imagen</label>
-            <input type="file" name="imagen" class="form-control" accept="image/*" required>
+            <input type="file" name="imagenperro" class="form-control" accept="image/*"required>
         </div>
 
         <div class="mb-3">
@@ -75,15 +75,8 @@
             <textarea name="descripcion" class="form-control" required></textarea>
         </div>
 
-        <div class="mb-3">
-            <label class="form-label">🧑 Refugio</label>
-            <select name="refugio_id" class="form-control" required>
-                <option value="">Seleccione un refugio</option>
-                @foreach($roles as $rol)
-                    <option value="{{ $rol->id }}">{{ $rol->nombre }}</option>
-                @endforeach
-            </select>
-        </div>
+        {{-- CAMPO CORREGIDO --}}
+        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
 
         <div class="mb-3">
             <label class="form-label">📌 Disponible para adopción</label>
