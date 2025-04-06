@@ -54,7 +54,7 @@
     <!-- Menú Lateral -->
      <main>
      <nav class="side-menu" id="sideMenu">
-    <a href="{{ route('perfil') }}"><i class="fas fa-user"></i> Perfil</a>
+   
     <a href="{{ url('/estadisticas') }}"><i class="fas fa-chart-bar"></i> Estadísticas</a>
     <a href="cuidados"><i class="fas fa-cog"></i> Cuidados</a>
  
