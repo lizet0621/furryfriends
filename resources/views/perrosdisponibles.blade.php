@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="container">
     
     <!-- 🏠 Botón de regreso a inicio -->
     <form action="{{ url()->previous() }}">
     <button type="submit" class="btn btn-primary">⬅ Volver</button>
 </form>
+
     </i> 
     </a>
 
@@ -51,11 +53,11 @@
             @foreach($perros as $perro)
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        @if($perro->imagenperro)
-                            <img src="{{ asset('storage/' . $perro->imagenperro) }}" class="card-img-top" alt="Imagen de {{ $perro->nombre }}">
-                        @else
-                            <img src="{{ asset('images/default-dog.jpg') }}" class="card-img-top" alt="Imagen no disponible">
-                        @endif
+                    @if($perro->imagenperro)
+    <img src="{{ asset('storage/' . $perro->imagenperro) }}" alt="Imagen de {{ $perro->nombre }}" class="img-fluid" style="width: 100%; height: 270px; object-fit:cover;">
+@else
+    <img src="{{ asset('images/no-image.png') }}" alt="Imagen no disponible" width="150" height="150">
+@endif
 
                         <div class="card-body">
                             <h5 class="card-title">{{ $perro->nombre }}</h5>
@@ -64,10 +66,12 @@
                                 <strong>Edad:</strong> {{ $perro->edad ?? 'No especificada' }} años<br>
                                 <strong>Color:</strong> {{ $perro->color ?? 'No especificado' }}<br>
                                 <strong>Tamaño:</strong> {{ $perro->tamanio ?? 'No especificado' }}<br>
-                                <strong>Características:</strong> {{ $perro->caracteristica ?? 'No especificadas' }}<br>
-                                <strong>Refugio:</strong> {{ optional($perro->refugio)->nombre ?? 'Sin refugio' }}
+                                <strong>Descripcion:</strong> {{ $perro->descripcion ?? 'No especificadas' }}<br>
+                                <strong>Historial Clinico:</strong> {{ $perro->historial_clinico ?? 'No especificadas' }}<br>
+                           
+                         
                             </p>
-                            <p class="card-text">{{ $perro->descripcion ?? 'Sin descripción' }}</p>
+                            
                         </div>
 
                         <div class="card-footer">
@@ -85,4 +89,28 @@
         </div>
     @endif
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const forms = document.querySelectorAll('form[action="{{ route('solicitud.adopcion') }}"]');
+
+        forms.forEach(form => {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault(); // Detiene el envío automático
+
+                Swal.fire({
+                    title: '¡Solicitud Enviada!',
+                    text: 'Tu solicitud ha sido enviada al refugio correspondiente. Serás notificado por correo cuando respondan.',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit(); // Ahora sí se envía el formulario
+                    }
+                });
+            });
+        });
+    });
+</script>
+
 @endsection
