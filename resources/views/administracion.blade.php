@@ -15,6 +15,7 @@
         </a>
     </header>
 
+    
     <div class="container text-center animate_animated animate_fadeInUp" style="margin-top: 80px;"> <!-- Ajustar margen superior -->
         <link rel="stylesheet" href="{{ asset('cssone/admin.css') }}"> <!-- Enlazamos el CSS externo -->
 
