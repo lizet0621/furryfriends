@@ -36,6 +36,7 @@ class RegisterRequest extends FormRequest
             'responsable' => 'nullable|string|max:255',
             'servicios' => 'nullable|string|max:255',
 
+            
             'id_rol' => 'required|exists:roles,id',
 
         ];
