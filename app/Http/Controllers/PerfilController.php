@@ -4,38 +4,47 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class PerfilController extends Controller
 {
-    public function perfil()
+    // Muestra la vista del perfil
+    public function mostrar()
     {
-        $usuario = Auth::user();
-        
-        if (!$usuario) {
-            return redirect()->route('login')->with('error', 'Debes iniciar sesión.');
-        }
-
+        $usuario = Auth::user(); // Usuario autenticado
         return view('perfil', compact('usuario'));
     }
 
-    public function actualizarPerfil(Request $request)
+    // Actualiza los datos del usuario
+    public function actualizar(Request $request)
     {
-        $usuario = Auth::user();
-
         $request->validate([
             'nombre' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:users,email,' . $usuario->id,
+            'email' => 'required|email|max:255|unique:users,email,' . Auth::id(),
             'telefono' => 'nullable|string|max:20',
             'direccion' => 'nullable|string|max:255',
         ]);
 
-        $usuario->update([
-            'name' => $request->nombre,
-            'email' => $request->email,
-            'telefono' => $request->telefono,
-            'direccion' => $request->direccion,
-        ]);
+        $usuario = Auth::user();
+        $usuario->name = $request->nombre;
+        $usuario->email = $request->email;
+        $usuario->telefono = $request->telefono;
+        $usuario->direccion = $request->direccion;
+        $usuario->save();
 
-        return redirect()->route('perfil')->with('success', 'Perfil actualizado correctamente.');
+        return redirect()->route('perfil.mostrar')->with('success', 'Perfil actualizado correctamente');
+    }
+
+    // Elimina el usuario autenticado
+    public function eliminar()
+    {
+        $usuario = Auth::user();
+
+        Auth::logout(); // Cierra sesión antes de eliminar
+
+        $usuario->delete(); // Elimina el usuario
+
+        return redirect('/')->with('success', 'Tu cuenta ha sido eliminada');
     }
 }
