@@ -10,7 +10,6 @@ class SeguimientoVisitas extends Model
     use HasFactory;
 
     protected $table = 'seguimientovisitas';
-
     protected $fillable = [
         'adoptante_id',
         'archivo',
