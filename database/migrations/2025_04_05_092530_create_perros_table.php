@@ -20,19 +20,17 @@ class CreatePerrosTable extends Migration
             $table->text('historial_clinico')->nullable();
             $table->text('descripcion')->nullable();
 
-            // Foreign key hacia roles
-            $table->unsignedBigInteger('refugio_id');
-
-            // Asegura que el motor de la tabla sea InnoDB
-            $table->engine = 'InnoDB';
-
-            $table->foreign('refugio_id')
+            // Referencia al usuario que registró al perro
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
                   ->references('id')
                   ->on('users')
                   ->onDelete('cascade');
 
             $table->boolean('disponible')->default(true);
             $table->timestamps();
+
+            $table->engine = 'InnoDB';
         });
     }
 
