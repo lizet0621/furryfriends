@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $usuarios = User::where('activo', true)->with('role')->get(); // Filtrar usuarios activos
+        $usuarios = User::where('activo', true)->with('role')->get(); // Filtrar usuarios activos
         return view('Users.index', compact('usuarios'));
     }
 
@@ -35,6 +35,9 @@ class UserController extends Controller
             'servicios' => 'nullable|string',
             'id_rol' => 'required|exists:roles,id'
         ]);
+
+        // Encriptar la contraseña antes de guardar
+        $validated['password'] = bcrypt($validated['password']);
 
         User::create($validated);
 
@@ -68,11 +71,13 @@ class UserController extends Controller
             'id_rol' => 'required|exists:roles,id'
         ]);
 
+        // Si se proporciona una nueva contraseña, se encripta y se guarda
         if ($request->filled('password')) {
-            $User->password = $validated['password'];
+            $User->password = bcrypt($validated['password']);
         }
 
-        $User->fill($validated);
+        // Rellenar el resto de campos (excepto password)
+        $User->fill(collect($validated)->except('password')->toArray());
         $User->save();
 
         return redirect()->route('Users.index')->with('success', 'Usuario actualizado correctamente.');
