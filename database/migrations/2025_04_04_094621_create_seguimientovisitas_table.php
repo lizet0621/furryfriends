@@ -8,24 +8,22 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('SeguimientoVisitas', function (Blueprint $table) {
+        Schema::create('seguimientoVisitas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('rol_id')->nullable(); // Relación con roles
-            $table->string('archivo');
-            $table->boolean('activo')->default(true); // Campo para eliminación lógica
+            $table->unsignedBigInteger('rol_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable(); // Nuevo: usuario que sube
+            $table->string('archivo'); // Ruta del archivo
+            $table->string('nombre_original'); // Nuevo: nombre original del archivo
+            $table->boolean('activo')->default(true);
             $table->timestamps();
 
-            // Clave foránea apuntando a roles
-            $table->foreign('rol_id')
-                  ->references('id')
-                  ->on('roles') // Asegúrate de que esta tabla existe antes de ejecutar la migración
-                  ->onDelete('cascade');
-        });;
-
+            $table->foreign('rol_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+        });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('SeguimientoVisitas');
+        Schema::dropIfExists('seguimientoVisitas');
     }
 };
