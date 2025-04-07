@@ -48,6 +48,7 @@ class ViabilidadEstudiosController extends Controller
         // Eliminar el archivo del almacenamiento
         Storage::disk('public')->delete($viabilidadEstudios->archivo);
 
+        
         $viabilidadEstudios->delete();
 
         return redirect()->route('ViabilidadEstudios.index')->with('success', 'Viabilidad eliminada con éxito.');
