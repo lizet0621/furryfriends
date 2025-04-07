@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SeguimientoVisitas;
+use Illuminate\Support\Facades\Storage;
 
 class SeguimientoVisitasController extends Controller
 {
@@ -21,32 +22,34 @@ class SeguimientoVisitasController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'adoptante_id' => 'required|exists:adoptantes,id',
-            'archivo' => 'required|mimes:pdf,jpg,png|max:2048', // Permite PDF e imágenes
+            'role_id' => 'required|exists:roles,id', // Cambiado de adoptante_id a role_id
+            'archivos' => 'required', 
+            'archivos.*' => 'file|mimes:pdf,jpg,png|max:2048', 
         ]);
-
-        // Subir archivo
-        $archivoNombre = $request->file('archivo')->store('seguimientos', 'public');
-
-        SeguimientoVisitas::create([
-            'adoptante_id' => $request->adoptante_id,
-            'archivo' => $archivoNombre,
-        ]);
+        
+        // Subir múltiples archivos
+        if ($request->hasFile('archivos')) {
+            foreach ($request->file('archivos') as $archivo) {
+                $ruta = $archivo->store('seguimientovisitas', 'public');
+                SeguimientoVisitas::create([
+                    'role_id' => $request->role_id, // Cambiado de adoptante_id a role_id
+                    'archivo' => $ruta,
+                ]);
+            }
+        }
 
         return redirect()->route('SeguimientoVisitas.index')
-                         ->with('success', 'Archivo subido exitosamente.');
+                         ->with('success', 'Archivos subidos exitosamente.');
     }
 
     public function destroy($id)
     {
         $seguimiento = SeguimientoVisitas::findOrFail($id);
-        
-        // Eliminar archivo del almacenamiento
-        \Storage::delete('public/' . $seguimiento->archivo);
 
-        $seguimiento->delete();
+        // Desactivar el registro en lugar de eliminarlo físicamente
+        $seguimiento->update(['activo' => false]);
 
         return redirect()->route('SeguimientoVisitas.index')
-                         ->with('success', 'Registro eliminado.');
+                         ->with('success', 'Registro desactivado.');
     }
 }
