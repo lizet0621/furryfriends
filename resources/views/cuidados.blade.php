@@ -18,12 +18,12 @@
     <div class="main-container">
         
         <!-- 🔹 Contenedor del título -->
-        <div class="title-container">
-            <h2>Aprende a cuidar a tu perrito con amor </h2>
-            <form action="{{ url()->previous() }}">
-    <button type="submit" class="btn btn-primary"></form>🏠 Volver al Inicio</button>
-            </a>
-        </div>
+        <!-- 🔹 Contenedor del título -->
+<div class="title-container">
+    <h2>Aprende a cuidar a tu perrito con amor </h2>
+    <a href="/" onclick="event.preventDefault(); window.history.length > 1 ? history.back() : window.location='/'" class="btn-volver">⬅ Volver</a>
+</div>
+
 
         <!-- 🔹 Contenedor de información -->
         <div class="info-container">
