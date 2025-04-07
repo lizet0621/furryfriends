@@ -8,23 +8,22 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('ViabilidadEstudios', function (Blueprint $table) {
+        Schema::create('viabilidadEstudios', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('rol_id')->nullable(); // Relación con roles
-            $table->string('archivo');
-            $table->boolean('activo')->default(true); // Campo para eliminación lógica
+            $table->unsignedBigInteger('rol_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable(); // Usuario que sube el archivo
+            $table->string('archivo'); // Ruta del archivo
+            $table->string('nombre_original'); // Nombre original del archivo
+            $table->boolean('activo')->default(true);
             $table->timestamps();
 
-            // Clave foránea apuntando a roles
-            $table->foreign('rol_id')
-                  ->references('id')
-                  ->on('roles')
-                  ->onDelete('cascade');
+            $table->foreign('rol_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('ViabilidadEstudios');
-    }
+        Schema::dropIfExists('viabilidadEstudios');
+}
 };
