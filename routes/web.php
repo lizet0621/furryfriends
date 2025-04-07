@@ -19,6 +19,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController as ControllersLoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PerfilController;
 
 
 //Ruta ejemplo
@@ -210,10 +211,12 @@ Route::get('/welcome', [EstadisticasController::class, 'metodo'])->name('welcome
 // Ruta para el registro de Perros  segun su rol de refugio
 Route::post('/perros', [PerrosDisponiblesController::class, 'store'])->name('perros.store');
 
-
-
-
-
+//ruta de perfil
+Route::middleware('auth')->group(function () {
+    Route::get('/perfil', [PerfilController::class, 'mostrar'])->name('perfil.mostrar');
+    Route::put('/perfil', [PerfilController::class, 'actualizar'])->name('perfil.actualizar');
+    Route::delete('/perfil', [PerfilController::class, 'eliminar'])->name('perfil.eliminar');
+});
 
 
 
