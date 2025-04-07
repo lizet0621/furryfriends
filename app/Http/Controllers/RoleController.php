@@ -11,5 +11,4 @@ use Illuminate\Support\Facades\Auth;
 class RoleController extends Controller
 {
     //
-
 }
