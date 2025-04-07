@@ -95,6 +95,7 @@ class PerrosController extends Controller
         return view('Perros.edit', compact('perro'));
     }
 
+    
     // ✅ NUEVO MÉTODO AÑADIDO PARA EDIT FUNCIONAL
     public function update(Request $request, $id)
     {
