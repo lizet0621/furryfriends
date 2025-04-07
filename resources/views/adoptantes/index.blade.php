@@ -12,6 +12,7 @@
             <div class="alert alert-success text-center">{{ session('success') }}</div>
         @endif
 
+        
         <div class="table-responsive">
             <table class="table table-striped table-hover border rounded-3 overflow-hidden">
                 <thead class="table-info text-dark text-center">
