@@ -11,5 +11,10 @@ class SeguimientoVisitasVista extends Model
 
     protected $table = 'seguimientoVisitas';
 
-    protected $fillable = ['archivo', 'activo']; 
+    protected $fillable = ['archivo', 'nombre_original', 'rol_id', 'user_id', 'activo'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
