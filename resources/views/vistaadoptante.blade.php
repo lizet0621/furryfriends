@@ -54,13 +54,12 @@
     <!-- Menú Lateral -->
      <main>
      <nav class="side-menu" id="sideMenu">
-   
-    <a href="{{ url('/estadisticas') }}"><i class="fas fa-chart-bar"></i> Estadísticas</a>
-    <a href="cuidados"><i class="fas fa-cog"></i> Cuidados</a>
- 
-    <a href="{{ route('viabilidadestudiovista.mostrar') }}"><i class="fas fa-file-alt"></i> Viabilidad de Estudio</a> <!-- Nuevo botón -->
-    <a href="{{ route('seguimientovisitasvista.mostrar') }}"><i class="fas fa-file-alt"></i> Seguimiento de Visitas</a> <!-- Nuevo botón -->
 
+     <a href="{{ url('/perfil') }}"><i class="fas fa-user"></i> Perfil</a>
+<a href="{{ url('/estadisticas') }}"><i class="fas fa-chart-bar"></i> Estadísticas</a>
+<a href="{{ url('/cuidados') }}"><i class="fas fa-heart"></i> Cuidados</a>
+<a href="{{ route('viabilidadestudiovista.mostrar') }}"><i class="fas fa-file-alt"></i> Viabilidad de Estudio</a>
+<a href="{{ route('seguimientovisitasvista.mostrar') }}"><i class="fas fa-folder"></i> Seguimiento de Visitas</a>
 </nav>
     <!-- Contenido Principal -->
     <div class="carousel-container">
