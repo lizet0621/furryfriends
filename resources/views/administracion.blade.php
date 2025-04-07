@@ -9,13 +9,10 @@
             <img src="{{ asset('imagenes/logo.jpg') }}" alt="Logo" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
             <h1 style="margin: 0; font-size: 1.5rem;">Furry Friends</h1>
         </div>
-        <form action="{{ url()->previous() }}">
-    <button type="submit" class="btn btn-primary">⬅ Volver</button>
-</form>
+        <a href="/" onclick="event.preventDefault(); window.history.length > 1 ? history.back() : window.location='/'" class="btn-volver">⬅ Volver</a>
         </a>
     </header>
 
-    
     <div class="container text-center animate_animated animate_fadeInUp" style="margin-top: 80px;"> <!-- Ajustar margen superior -->
         <link rel="stylesheet" href="{{ asset('cssone/admin.css') }}"> <!-- Enlazamos el CSS externo -->
 
