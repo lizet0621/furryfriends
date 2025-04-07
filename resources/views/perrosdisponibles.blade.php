@@ -4,10 +4,15 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="container">
     
-    <!-- 🏠 Botón de regreso a inicio -->
-    <form action="{{ url()->previous() }}">
-    <button type="submit" class="btn btn-primary">⬅ Volver</button>
-</form>
+   <!-- Botón de regreso -->
+<div class="mb-4">
+    <a href="/" 
+       onclick="event.preventDefault(); window.history.length > 1 ? history.back() : window.location='/'"
+       class="btn btn-outline-primary d-inline-flex align-items-center shadow-sm rounded-pill px-4 py-2"
+       style="font-weight: bold; font-size: 16px;">
+        ⬅ Volver
+    </a>
+</div>
 
     </i> 
     </a>
@@ -111,6 +116,9 @@
             });
         });
     });
+
+
+    //php artisan storage:link para que las fotos de vean en la vista
 </script>
 
 @endsection
