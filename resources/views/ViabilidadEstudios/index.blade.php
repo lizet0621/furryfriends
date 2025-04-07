@@ -44,12 +44,16 @@
                         @foreach($viabilidades as $viabilidad)
                         <tr>
                             <td class="fw-bold text-primary">{{ $viabilidad->id }}</td>
-                            <td class="text-dark">🐶 {{ $viabilidad->adoptante->nombre }}</td>
-                            <td class="text-dark">🏡 {{ $viabilidad->refugio->nombre }}</td>
+                            <td class="text-dark">🐶 {{ optional($viabilidad->adoptante)->nombre ?? 'Sin asignar' }}</td>
+                            <td class="text-dark">🏡 {{ optional($viabilidad->refugio)->nombre ?? 'Sin asignar' }}</td>
                             <td>
-                                <a href="{{ asset('storage/' . $viabilidad->archivo) }}" target="_blank" class="btn btn-outline-info btn-sm">
-                                    <i class="fas fa-eye"></i> Ver Archivo 📄
-                                </a>
+                                @if (!empty($viabilidad->archivo))
+                                    <a href="{{ asset('storage/' . $viabilidad->archivo) }}" target="_blank" class="btn btn-outline-info btn-sm">
+                                        <i class="fas fa-eye"></i> Ver Archivo 📄
+                                    </a>
+                                @else
+                                    <span class="text-muted">Sin archivo</span>
+                                @endif
                             </td>
                             <td>
                                 <form action="{{ route('ViabilidadEstudios.destroy', $viabilidad->id) }}" method="POST" class="d-inline">
@@ -64,6 +68,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                @if($viabilidades->isEmpty())
+                    <p class="text-center mt-3 text-muted">No hay registros disponibles.</p>
+                @endif
             </div>
         </div>
     </div>
