@@ -1,7 +1,8 @@
 @extends('layouts.register')
+
 @section('content')
     <link rel="stylesheet" href="{{ asset('cssone/registro.css') }}">
-
+    
     <style>
         #registro-adoptante-container {
             max-width: 800px;
@@ -100,7 +101,7 @@
             background-color: #45a049;
         }
     </style>
-
+<a href="{{ url('/') }}" class="btn btn-secondary">🏠 volver a inicio</a>
     <div id="registro-adoptante-container">
         <div class="titulo-registro">Selecciona tu Rol</div>
 
