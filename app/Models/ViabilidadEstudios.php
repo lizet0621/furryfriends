@@ -15,15 +15,17 @@ class ViabilidadEstudios extends Model
         'adoptante_id',
         'refugio_id',
         'archivo',
+        'nombre_original',
+        'activo', // <- ¡Asegúrate de tener este campo aquí!
     ];
 
     public function adoptante()
     {
-        return $this->belongsTo(Adoptante::class);
+        return $this->belongsTo(User::class, 'adoptante_id');
     }
 
     public function refugio()
     {
-        return $this->belongsTo(Refugio::class);
+        return $this->belongsTo(User::class, 'refugio_id');
     }
 }
