@@ -1,158 +1,142 @@
 /* Estilos generales */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
 
 body {
-    background: linear-gradient(135deg, #B3E5FC, #81D4FA);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    /* Azul pastel claro */
 }
+
+
+/* Cabecera */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #42a5f5;
+    /* Azul más intenso */
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: rgb(0, 0, 0);
+    font-size: 24px;
+    margin: 0;
+}
+
+
+/* Contenedor principal */
 
 .container {
-    max-height: 90vh; /* Altura máxima ajustada */
-    overflow-y: auto; /* Solo permite desplazamiento vertical */
-    overflow-x: hidden; /* Evita el desplazamiento lateral */
+    max-width: 600px;
+    margin: 30px auto;
     padding: 20px;
-    margin: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     background: white;
-    width: 100%;
-    max-width: 450px;
-    position: relative; /* Mantiene la estructura sin interferir */
-    z-index: 1;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.btn-toggle {
-    margin-bottom: 15px; /* Aumenta el espacio debajo del botón */
-}
 
 /* Botones */
-.btn-toggle {
-    background: linear-gradient(135deg, #0288D1, #01579B);
-    
-    color: white;
-    padding: 12px;
-    width: 100%;
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.btn {
+    padding: 12px 18px;
+    font-size: 16px;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
+    background-color: #64b5f6;
+    /* Azul pastel */
+    color: white;
     cursor: pointer;
-    margin-top: 10px;
-    position: relative;
+    transition: all 0.3s ease-in-out;
 }
 
-.btn-toggle:hover {
-    background: linear-gradient(135deg, #0277BD, #004D73);
-    box-shadow: 0 4px 10px rgba(2, 119, 189, 0.4);
+.btn:hover {
+    background-color: #42a5f5;
+    /* Azul más intenso */
+    transform: scale(1.1);
 }
+
 
 /* Formulario */
-.input-group {
-    margin-bottom: 1rem;
+
+#form-container {
+    margin-top: 20px;
     text-align: left;
 }
 
-.input-group label {
-    display: block;
-    font-size: 14px;
-    color: #0277BD;
-    margin-bottom: 5px;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #4FC3F7;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-
-.input-group input:focus {
-    border-color: #0288D1;
-    outline: none;
-    box-shadow: 0 0 8px rgba(2, 136, 209, 0.5);
-}
-
-/* Ocultar campos extra inicialmente */
-.extra-fields {
-    display: none;
-    margin-top: 15px;
-}
-
-/* Tooltip */
-.tooltip-container {
-    position: relative;
+form {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10; /* Más alto que el container */
+    flex-direction: column;
+    gap: 10px;
 }
 
-/* Asegurar que el tooltip esté por ENCIMA del container */
-.tooltip {
-    visibility: hidden;
-    background: rgba(0, 0, 0, 0.7); /* Más claro */
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    position: absolute;
-    bottom: 120%; /* Mueve el tooltip completamente arriba */
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.3s, visibility 0.3s;
-    z-index: 1000; /* Asegura que el tooltip quede sobre todo */
+label {
+    font-weight: bold;
+    color: #333;
 }
 
-/* Mostrar tooltip al pasar el mouse */
-.tooltip-container:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
-}
-
-/* Botón de registro */
-.btn-register {
-    background: linear-gradient(135deg, #00796B, #004D40);
-    color: white;
-    padding: 12px;
-    width: 100%;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: all 0.3s ease;
-}
-
-.btn-register:hover {
-    background: linear-gradient(135deg, #00695C, #00332E);
-    box-shadow: 0 4px 10px rgba(0, 121, 107, 0.5);
-}
-
-/* Ajuste para textarea */
-.input-group textarea {
-    width: 100%;
+input,
+textarea,
+button {
     padding: 10px;
-    border: 2px solid #4FC3F7;
-    border-radius: 8px;
-    font-size: 16px;
-    resize: none;
-    transition: all 0.3s ease;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.input-group textarea:focus {
-    border-color: #0288D1;
-    outline: none;
-    box-shadow: 0 0 8px rgba(2, 136, 209, 0.5);
+button[type="submit"] {
+    background-color: #0288d1;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0277bd;
+    transform: scale(1.05);
+}
+
+.back-button {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.back-button .btn {
+    background-color: #0288d1;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button .btn:hover {
+    background-color: #0277bd;
 }
