@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\SeguimientoVisitasVista;
 
 class SeguimientoVisitasVistaController extends Controller
@@ -11,21 +12,10 @@ class SeguimientoVisitasVistaController extends Controller
     {
         $query = SeguimientoVisitasVista::where('activo', true);
 
-        // Filtros multicriterio
         if ($request->filled('archivo')) {
-            $query->where('archivo', 'like', '%' . $request->archivo . '%');
-        }
-
-        if ($request->filled('rol_id')) {
-            $query->where('rol_id', $request->rol_id);
-        }
-
-        if ($request->filled('fecha_inicio')) {
-            $query->whereDate('created_at', '>=', $request->fecha_inicio);
-        }
-
-        if ($request->filled('fecha_fin')) {
-            $query->whereDate('created_at', '<=', $request->fecha_fin);
+            $query->where('nombre_original', 'like', '%' . $request->archivo . '%');
+        } else {
+            $query->whereRaw('1 = 0'); // Ocultar si no se busca
         }
 
         $seguimientos = $query->latest()->get();
@@ -36,7 +26,6 @@ class SeguimientoVisitasVistaController extends Controller
     public function subir(Request $request)
     {
         $request->validate([
-            'rol_id' => 'required|exists:roles,id',
             'archivos' => 'required|array',
             'archivos.*' => 'file|mimes:pdf,jpg,png|max:2048',
         ]);
@@ -45,8 +34,10 @@ class SeguimientoVisitasVistaController extends Controller
             foreach ($request->file('archivos') as $archivo) {
                 $ruta = $archivo->store('seguimientovisitas', 'public');
                 SeguimientoVisitasVista::create([
-                    'rol_id' => $request->rol_id,
+                    'rol_id' => Auth::user()->id_rol,
+                    'user_id' => Auth::id(),
                     'archivo' => $ruta,
+                    'nombre_original' => $archivo->getClientOriginalName(),
                     'activo' => true,
                 ]);
             }
@@ -55,7 +46,6 @@ class SeguimientoVisitasVistaController extends Controller
         return redirect()->route('seguimientovisitasvista.mostrar')->with('success', 'Documentos subidos con éxito.');
     }
 
-    
     public function desactivar($id)
     {
         $seguimiento = SeguimientoVisitasVista::findOrFail($id);
