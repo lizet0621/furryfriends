@@ -4,52 +4,50 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ViabilidadEstudios;
-use App\Models\Adoptante;
-use App\Models\Refugio;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Rol;
+use Illuminate\Support\Facades\Auth;
 
 class ViabilidadEstudiosController extends Controller
 {
     public function index()
     {
-        $viabilidades = ViabilidadEstudios::all();
+        $viabilidades = ViabilidadEstudios::where('activo', true)->get();
         return view('ViabilidadEstudios.index', compact('viabilidades'));
     }
 
     public function create()
     {
-        $adoptantes = Adoptante::all();
-        $refugios = Refugio::all();
-        return view('ViabilidadEstudios.create', compact('adoptantes', 'refugios'));
+        $roles = Rol::all(); // Por si necesitás mostrar roles
+        return view('ViabilidadEstudios.create', compact('roles'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'adoptante_id' => 'required|exists:adoptantes,id',
-            'refugio_id' => 'required|exists:refugios,id',
-            'archivo' => 'required|file|mimes:pdf,jpg,png|max:2048', // Acepta PDF e imágenes
+            'archivo' => 'required|file|mimes:pdf,jpg,png|max:2048',
         ]);
 
-        // Guardar el archivo en storage
-        $archivoPath = $request->file('archivo')->store('viabilidad', 'public');
+        $archivo = $request->file('archivo');
+        $ruta = $archivo->store('viabilidadestudios', 'public');
 
         ViabilidadEstudios::create([
-            'adoptante_id' => $request->adoptante_id,
-            'refugio_id' => $request->refugio_id,
-            'archivo' => $archivoPath,
+            'adoptante_id' => Auth::id(),
+            'refugio_id' => Auth::user()->rol_id,
+            'archivo' => $ruta,
+            'nombre_original' => $archivo->getClientOriginalName(),
+            'activo' => true,
         ]);
 
-        return redirect()->route('ViabilidadEstudios.index')->with('success', 'Viabilidad registrada con éxito.');
+        return redirect()->route('ViabilidadEstudios.index')
+                         ->with('success', 'Archivo subido exitosamente.');
     }
 
-    public function destroy(ViabilidadEstudios $viabilidadEstudios)
+    public function destroy($id)
     {
-        // Eliminar el archivo del almacenamiento
-        Storage::disk('public')->delete($viabilidadEstudios->archivo);
+        $viabilidad = ViabilidadEstudios::findOrFail($id);
+        $viabilidad->update(['activo' => false]);
 
-        $viabilidadEstudios->delete();
-
-        return redirect()->route('ViabilidadEstudios.index')->with('success', 'Viabilidad eliminada con éxito.');
+        return redirect()->route('ViabilidadEstudios.index')
+                         ->with('success', 'Registro desactivado.');
     }
 }
