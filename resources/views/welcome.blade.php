@@ -92,9 +92,7 @@
 <a href="{{ route('perrosdisponibles') }}" class="btn btn-primary">
         <i class="fas fa-search"></i> Ver Perros en Adopción
     </a>
-    <a href="{{ url('registroperros1') }}" class="btn btn-secondary">
-        <i class="fas fa-plus-circle"></i> Registra un cachorrito
-</a>
+    
 </div>
 
     
