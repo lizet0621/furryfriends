@@ -14,7 +14,7 @@
             <h1>Furry Friends</h1>
         </div>
         <form action="{{ url()->previous() }}">
-    <button type="submit" class="btn btn-primary">⬅ Volver</button>
+        <a href="javascript:history.back()" class="btn btn-primary">⬅ Volver</a>
     </header>
     <div class="container">
         <h1>Estadísticas de Adopciones y Registros</h1>
