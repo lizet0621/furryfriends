@@ -9,6 +9,12 @@ class ViabilidadEstudioVista extends Model
 {
     use HasFactory;
 
-    protected $table = 'ViabilidadEstudios'; // Nombre real de la tabla en la BD
-    protected $fillable = ['archivo'];
+    protected $table = 'viabilidadEstudios';
+
+    protected $fillable = ['archivo', 'nombre_original', 'rol_id', 'user_id', 'activo'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
