@@ -12,4 +12,5 @@ class SolicitudAdopcionController extends Controller
         // Ejemplo: guardar en la base de datos
         return redirect()->back()->with('success', 'Solicitud enviada correctamente');
     }
+    
 }
