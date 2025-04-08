@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\ViabilidadEstudioVista;
 
 class ViabilidadEstudioVistaController extends Controller
@@ -11,9 +12,10 @@ class ViabilidadEstudioVistaController extends Controller
     {
         $query = ViabilidadEstudioVista::where('activo', true);
 
-        // Filtro de búsqueda por nombre del archivo
-        if ($request->has('search') && $request->search != '') {
-            $query->where('archivo', 'like', '%' . $request->search . '%');
+        if ($request->filled('archivo')) {
+            $query->where('nombre_original', 'like', '%' . $request->archivo . '%');
+        } else {
+            $query->whereRaw('1 = 0'); // No muestra nada si no se busca
         }
 
         $viabilidades = $query->latest()->get();
@@ -24,7 +26,6 @@ class ViabilidadEstudioVistaController extends Controller
     public function subir(Request $request)
     {
         $request->validate([
-            'rol_id' => 'required|exists:roles,id', // ← Asegúrate que el name del input sea 'rol_id'
             'archivos' => 'required|array',
             'archivos.*' => 'file|mimes:pdf,jpg,png|max:2048',
         ]);
@@ -32,10 +33,11 @@ class ViabilidadEstudioVistaController extends Controller
         if ($request->hasFile('archivos')) {
             foreach ($request->file('archivos') as $archivo) {
                 $ruta = $archivo->store('viabilidadestudios', 'public');
-
                 ViabilidadEstudioVista::create([
-                    'rol_id' => $request->rol_id,
+                    'rol_id' => Auth::user()->id_rol,
+                    'user_id' => Auth::id(),
                     'archivo' => $ruta,
+                    'nombre_original' => $archivo->getClientOriginalName(),
                     'activo' => true,
                 ]);
             }
