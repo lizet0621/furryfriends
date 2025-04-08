@@ -44,10 +44,7 @@
 </div>
 @auth
     <!-- Si el usuario ha iniciado sesión -->
-    <a href="{{ route('logout') }}" class="btn btn-danger"
-       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-        <i class="fas fa-sign-out-alt"></i> Cerrar sesión
-    </a>
+    
     <!-- Formulario de Cerrar sesión -->
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
@@ -95,9 +92,7 @@
 <a href="{{ route('perrosdisponibles') }}" class="btn btn-primary">
         <i class="fas fa-search"></i> Ver Perros en Adopción
     </a>
-    <a href="{{ url('registroperros1') }}" class="btn btn-secondary">
-        <i class="fas fa-plus-circle"></i> Registra un cachorrito
-</a>
+    
 </div>
 
     

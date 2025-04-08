@@ -53,13 +53,17 @@
     <!-- Menú Lateral -->
      <main>
      <nav class="side-menu" id="sideMenu">
-    <a href="{{ route('perfil') }}"><i class="fas fa-user"></i> Perfil</a>
-    <a href="{{ url('/estadisticas') }}"><i class="fas fa-chart-bar"></i> Estadísticas</a>
-    <a href="cuidados"><i class="fas fa-cog"></i> Cuidados</a>
-    <a href="/administracion"><i class="fas fa-cog"></i> Administración</a>
-    <a href="{{ route('viabilidadestudiovista.mostrar') }}"><i class="fas fa-file-alt"></i> Viabilidad de Estudio</a> <!-- Nuevo botón -->
-    <a href="{{ route('seguimientovisitasvista.mostrar') }}"><i class="fas fa-file-alt"></i> Seguimiento de Visitas</a> <!-- Nuevo botón -->
 
+    
+     <a href="{{ url('/perfil') }}"><i class="fas fa-user"></i> Perfil</a>
+<a href="{{ url('/estadisticas') }}"><i class="fas fa-chart-bar"></i> Estadísticas</a>
+<a href="/administracion"><i class="fas fa-cog"></i> Administración</a>
+<a href="{{ url('/cuidados') }}"><i class="fas fa-heart"></i> Cuidados</a>
+<a href="{{ route('viabilidadestudiovista.mostrar') }}"><i class="fas fa-file-alt"></i> Viabilidad de Estudio</a>
+<a href="{{ route('seguimientovisitasvista.mostrar') }}"><i class="fas fa-folder"></i> Seguimiento de Visitas</a>
+
+
+    
 </nav>
     <!-- Contenido Principal -->
     <div class="carousel-container">
@@ -91,7 +95,7 @@
 <a href="{{ route('perrosdisponibles') }}" class="btn btn-primary">
         <i class="fas fa-search"></i> Ver Perros en Adopción
     </a>
-    <a href="registroperros" class="btn btn-secondary">
+    <a href="registroperros1" class="btn btn-secondary">
         <i class="fas fa-plus-circle"></i> Registra un cachorrito
     </a>
 </div>

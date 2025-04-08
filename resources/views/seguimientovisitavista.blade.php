@@ -9,9 +9,7 @@
 
 
 
-<form action="{{ url()->previous() }}">
-    <button type="submit" class="btn btn-primary">⬅ Volver</button>
-</form>
+<a href="/" onclick="event.preventDefault(); window.history.length > 1 ? history.back() : window.location='/'" class="btn btn-primary">⬅ Volver</a>
 <div class="container">
 
 
