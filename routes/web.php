@@ -19,6 +19,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController as ControllersLoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PerfilController;
 
 
 //Ruta ejemplo
@@ -98,9 +99,13 @@ Route::get('/roles', function () {
 })->name('roles');
 
 // Rutas para Perros
-Route::get('/Perros', [PerrosController::class, 'index'])->name('Perros.index');
-Route::get('/Perros/create', [PerrosController::class, 'create'])->name('Perros.create');
-Route::post('/Perros/store', [PerrosController::class, 'store'])->name('Perros.store');
+//Route::get('/Perros', [PerrosController::class, 'index'])->name('Perros.index');
+//Route::get('/Perros/create', [PerrosController::class, 'create'])->name('Perros.create');
+//Route::post('/Perros/store', [PerrosController::class, 'store'])->name('Perros.store');
+//Route::resource('Perros', PerrosController::class);
+
+//Route::get('Perros/{id}/edit', [PerrosController::class, 'edit'])->name('Perros.edit');
+//Route::get('Perros/{id}', [PerrosController::class, 'show'])->name('Perros.show');
 Route::resource('Perros', PerrosController::class);
 
 
@@ -129,8 +134,12 @@ Route::get('/vistaadmin', function () {
     return view('vistaadmin');
 })->name('vistaadmin');
 
-
-
+//perfil vista
+Route::middleware(['auth'])->group(function () {
+    Route::get('/perfil', [PerfilController::class, 'mostrar'])->name('perfil.mostrar');
+    Route::put('/perfil/actualizar', [PerfilController::class, 'actualizar'])->name('perfil.actualizar');
+    Route::delete('/perfil/eliminar', [PerfilController::class, 'eliminar'])->name('perfil.eliminar');
+});
 
 // Perfil del Adoptante (solo adoptantes)
 //Route::middleware(['auth', 'role:adoptante'])->group(function () {
@@ -198,3 +207,20 @@ Route::get('/estadisticas', [EstadisticasController::class, 'index'])->name('est
 
 // Página principal con estadísticas
 Route::get('/welcome', [EstadisticasController::class, 'metodo'])->name('welcome');
+
+// Ruta para el registro de Perros  segun su rol de refugio
+Route::post('/perros', [PerrosDisponiblesController::class, 'store'])->name('perros.store');
+
+//ruta de perfil
+Route::middleware('auth')->group(function () {
+    Route::get('/perfil', [PerfilController::class, 'mostrar'])->name('perfil.mostrar');
+    Route::put('/perfil', [PerfilController::class, 'actualizar'])->name('perfil.actualizar');
+    Route::delete('/perfil', [PerfilController::class, 'eliminar'])->name('perfil.eliminar');
+});
+
+
+
+
+
+
+
