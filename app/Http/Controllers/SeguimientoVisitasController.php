@@ -4,49 +4,54 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SeguimientoVisitas;
+use App\Models\Rol;
+use Illuminate\Support\Facades\Storage;
 
 class SeguimientoVisitasController extends Controller
 {
     public function index()
     {
-        $seguimientos = SeguimientoVisitas::all();
+        $seguimientos = SeguimientoVisitas::where('activo', true)->get();
         return view('SeguimientoVisitas.index', compact('seguimientos'));
     }
 
     public function create()
     {
-        return view('SeguimientoVisitas.create');
+        $roles = Rol::all(); // Si necesitas mostrar roles en un select
+        return view('SeguimientoVisitas.create', compact('roles'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'adoptante_id' => 'required|exists:adoptantes,id',
-            'archivo' => 'required|mimes:pdf,jpg,png|max:2048', // Permite PDF e imágenes
+            'role_id' => 'required|exists:roles,id',
+            'archivos' => 'required',
+            'archivos.*' => 'file|mimes:pdf,jpg,png|max:2048',
         ]);
 
-        // Subir archivo
-        $archivoNombre = $request->file('archivo')->store('seguimientos', 'public');
+        if ($request->hasFile('archivos')) {
+            foreach ($request->file('archivos') as $archivo) {
+                $ruta = $archivo->store('seguimientovisitas', 'public');
 
-        SeguimientoVisitas::create([
-            'adoptante_id' => $request->adoptante_id,
-            'archivo' => $archivoNombre,
-        ]);
+                SeguimientoVisitas::create([
+                    'role_id' => $request->role_id,
+                    'archivo' => $ruta,
+                    'nombre_original' => $archivo->getClientOriginalName(),
+                    'activo' => true,
+                ]);
+            }
+        }
 
         return redirect()->route('SeguimientoVisitas.index')
-                         ->with('success', 'Archivo subido exitosamente.');
+                         ->with('success', 'Archivos subidos exitosamente.');
     }
 
     public function destroy($id)
     {
         $seguimiento = SeguimientoVisitas::findOrFail($id);
-        
-        // Eliminar archivo del almacenamiento
-        \Storage::delete('public/' . $seguimiento->archivo);
-
-        $seguimiento->delete();
+        $seguimiento->update(['activo' => false]);
 
         return redirect()->route('SeguimientoVisitas.index')
-                         ->with('success', 'Registro eliminado.');
+                         ->with('success', 'Registro desactivado.');
     }
 }

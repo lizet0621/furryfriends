@@ -36,19 +36,15 @@
     </header>
 <body>
 <div class="header-buttons">
-    <a href="{{ route('login') }}" class="btn btn-primary">
-    <i class="fas fa-sign-in-alt"></i> Iniciar sesión
-</a>
-    <a id="register-btn" class="btn btn-secondary">
-    <i class="fas fa-user-plus"></i> Registrarse
-</a>
+    <a href="{{ route('login') }}" class="btn btn-primary">Iniciar Sesión</a>
 
+    <a href="{{ route('register.natural') }}" class="btn btn-secondary">
+        <i class="fas fa-user-plus"></i> Registrarse
+</a>
+</div>
 @auth
     <!-- Si el usuario ha iniciado sesión -->
-    <a href="{{ route('logout') }}" class="btn btn-danger"
-       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-        <i class="fas fa-sign-out-alt"></i> Cerrar sesión
-    </a>
+    
     <!-- Formulario de Cerrar sesión -->
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
@@ -57,30 +53,15 @@
 
 </div>
     </header>
-
- <!-- Modal de Registro -->
-<div id="registerModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>¿Cómo deseas registrarte?</h2>
-        <a href="registroadoptante" class="btn btn-primary" data-tooltip="🔹 Regístrate como adoptante para buscar y adoptar perros 🐶.">Registrarse como Adoptante</a>
-
-<a href="registrorefugio" class="btn btn-secondary" data-tooltip="🏠 Regístrate como refugio para publicar perros en adopción.">Registrarse como Refugio</a>
-
-    </div>
-</div>
-
-
-
     <!-- Menú Lateral -->
      <main>
-    <nav class="side-menu" id="sideMenu">
-    <a href="{{ route('perfil') }}"><i class="fas fa-user"></i> Perfil</a>
-        <a href="{{ url('/estadisticas') }}"><i class="fas fa-chart-bar"></i> Estadísticas</a>
-        <a href="cuidados"><i class="fas fa-cog"></i> Cuidados</a>
-        <a href="administracion"><i class="fas fa-cog"></i> Administración</a>
-    </nav>
-    
+     <nav class="side-menu" id="sideMenu">
+ 
+    <a href="{{ url('/estadisticas') }}"><i class="fas fa-chart-bar"></i> Estadísticas</a>
+    <a href="cuidados"><i class="fas fa-cog"></i> Cuidados</a>
+ 
+
+</nav>
     <!-- Contenido Principal -->
     <div class="carousel-container">
     <div class="carousel-slide active">
@@ -111,9 +92,7 @@
 <a href="{{ route('perrosdisponibles') }}" class="btn btn-primary">
         <i class="fas fa-search"></i> Ver Perros en Adopción
     </a>
-    <a href="registroperros" class="btn btn-secondary">
-        <i class="fas fa-plus-circle"></i> Registra un cachorrito
-    </a>
+    
 </div>
 
     
@@ -168,6 +147,10 @@
     <footer>
         <p>&copy; 2024 Furry Friends - Todos los derechos reservados.</p>
     </footer>
+    
+
+
+
     
         
 </body>

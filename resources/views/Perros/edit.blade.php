@@ -2,45 +2,71 @@
 
 @section('content')
 <div class="container">
-    <h1>Editar perro</h1>
-    <form action="{{ route('Perros.update', $Perros->id) }}" method="POST">
+    <h2>Editar perro</h2>
+
+    <form action="{{ route('Perros.update', $perro->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
+
         <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $Perros->nombre }}" required>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" class="form-control" value="{{ $perro->nombre }}" required>
         </div>
+
         <div class="form-group">
-            <label for="edad">Edad</label>
-            <input type="number" class="form-control" id="edad" name="edad" value="{{ $Perros->edad }}" required>
+            <label for="edad">Edad:</label>
+            <input type="number" name="edad" class="form-control" value="{{ $perro->edad }}" required>
         </div>
+
         <div class="form-group">
-            <label for="raza">Raza</label>
-            <input type="text" class="form-control" id="raza" name="raza" value="{{ $Perros->raza }}">
+            <label for="imagen">Imagen (opcional):</label>
+            <input type="file" name="imagen" class="form-control-file">
         </div>
+
         <div class="form-group">
-            <label for="tamanio">Tamaño</label>
-            <select class="form-control" id="tamanio" name="tamanio" required>
-                <option value="Pequeño" {{ $Perros->tamanio == 'Pequeño' ? 'selected' : '' }}>Pequeño</option>
-                <option value="Mediano" {{ $Perros->tamanio == 'Mediano' ? 'selected' : '' }}>Mediano</option>
-                <option value="Grande" {{ $Perros->tamanio == 'Grande' ? 'selected' : '' }}>Grande</option>
+            <label for="raza">Raza:</label>
+            <input type="text" name="raza" class="form-control" value="{{ $perro->raza }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="color">Color:</label>
+            <input type="text" name="color" class="form-control" value="{{ $perro->color }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="tamano">Tamaño:</label>
+            <input type="text" name="tamano" class="form-control" value="{{ $perro->tamano }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="sexo">Sexo:</label>
+            <select name="sexo" class="form-control" required>
+                <option value="Macho" {{ $perro->sexo == 'Macho' ? 'selected' : '' }}>Macho</option>
+                <option value="Hembra" {{ $perro->sexo == 'Hembra' ? 'selected' : '' }}>Hembra</option>
             </select>
         </div>
+
         <div class="form-group">
-            <label for="descripcion">Descripción</label>
-            <textarea class="form-control" id="descripcion" name="descripcion">{{ $Perros->descripcion }}</textarea>
+            <label for="historial_clinico">Historial Clínico:</label>
+            <textarea name="historial_clinico" class="form-control" rows="3" required>{{ $perro->historial_clinico }}</textarea>
         </div>
+
         <div class="form-group">
-            <label for="refugio_id">Refugio</label>
-            <select class="form-control" id="refugio_id" name="refugio_id" required>
-                @foreach($refugios as $refugio)
-                    <option value="{{ $refugio->id }}" {{ $Perros->refugio_id == $refugio->id ? 'selected' : '' }}>
-                        {{ $refugio->nombre }}
-                    </option>
-                @endforeach
+            <label for="descripcion">Descripción:</label>
+            <textarea name="descripcion" class="form-control" rows="3" required>{{ $perro->descripcion }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="disponible">¿Está disponible?</label>
+            <select name="disponible" class="form-control" required>
+                <option value="1" {{ $perro->disponible == 1 ? 'selected' : '' }}>Sí</option>
+                <option value="0" {{ $perro->disponible == 0 ? 'selected' : '' }}>No</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Actualizar</button>
+
+        <input type="hidden" name="refugio_id" value="{{ $perro->refugio_id }}">
+
+        <button type="submit" class="btn btn-primary mt-3">Actualizar</button>
     </form>
 </div>
 @endsection

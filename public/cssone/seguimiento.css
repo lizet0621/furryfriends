@@ -1,0 +1,60 @@
+body {
+    background: url('/images/huellas.png') repeat, linear-gradient(to bottom, #cce7ff, #ffffcc, #ccffcc);
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    color: #0056b3;
+    text-shadow: 2px 2px 3px rgba(0, 86, 179, 0.3);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: #ffff99;
+    color: #333;
+}
+
+tr:nth-child(even) {
+    background: #e6f7ff;
+}
+
+tr:nth-child(odd) {
+    background: #ccffcc;
+}
+
+tr:hover {
+    background: #ffffcc;
+    transition: 0.3s;
+}
+
+a.ver-archivo {
+    text-decoration: none;
+    color: #0056b3;
+    font-weight: bold;
+}
+
+a.ver-archivo:hover {
+    color: #009933;
+}

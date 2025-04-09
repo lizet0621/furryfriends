@@ -1,9 +1,9 @@
 <?php
 
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Adoptante extends Authenticatable
@@ -16,6 +16,7 @@ class Adoptante extends Authenticatable
         'telefono',
         'password',
         'direccion',
+        'activo',
     ];
 
     protected $hidden = [
